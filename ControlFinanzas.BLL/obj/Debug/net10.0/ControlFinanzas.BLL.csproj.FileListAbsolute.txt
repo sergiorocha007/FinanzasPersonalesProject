@@ -1,0 +1,17 @@
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.BLL.deps.json
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.BLL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.BLL.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.DAL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.Entity.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.DAL.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\bin\Debug\net10.0\ControlFinanzas.Entity.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.csproj.AssemblyReference.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.AssemblyInfoInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.AssemblyInfo.cs
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.csproj.CoreCompileInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlF.F041E768.Up2Date
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\refint\ControlFinanzas.BLL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ControlFinanzas.BLL.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.BLL\obj\Debug\net10.0\ref\ControlFinanzas.BLL.dll

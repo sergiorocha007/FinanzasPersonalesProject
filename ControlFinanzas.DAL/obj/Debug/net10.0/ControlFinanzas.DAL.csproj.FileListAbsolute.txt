@@ -1,0 +1,15 @@
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\bin\Debug\net10.0\ControlFinanzas.DAL.deps.json
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\bin\Debug\net10.0\ControlFinanzas.DAL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\bin\Debug\net10.0\ControlFinanzas.DAL.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\bin\Debug\net10.0\ControlFinanzas.Entity.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\bin\Debug\net10.0\ControlFinanzas.Entity.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.csproj.AssemblyReference.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.AssemblyInfoInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.AssemblyInfo.cs
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.csproj.CoreCompileInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlF.1E54FFEA.Up2Date
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\refint\ControlFinanzas.DAL.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ControlFinanzas.DAL.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.DAL\obj\Debug\net10.0\ref\ControlFinanzas.DAL.dll

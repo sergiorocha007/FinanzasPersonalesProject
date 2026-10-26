@@ -1,0 +1,11 @@
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\bin\Debug\net10.0\ControlFinanzas.Entity.deps.json
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\bin\Debug\net10.0\ControlFinanzas.Entity.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\bin\Debug\net10.0\ControlFinanzas.Entity.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.AssemblyInfoInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.AssemblyInfo.cs
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.csproj.CoreCompileInputs.cache
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\refint\ControlFinanzas.Entity.dll
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ControlFinanzas.Entity.pdb
+C:\Users\rocha\Desktop\POO\ControlFinanzas\ControlFinanzas.Entity\obj\Debug\net10.0\ref\ControlFinanzas.Entity.dll

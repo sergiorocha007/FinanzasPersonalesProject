@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ControlFinanzas.BLL/ControlFinanzas.BLL.csproj" />
+  <Project Path="ControlFinanzas.DAL/ControlFinanzas.DAL.csproj" />
+  <Project Path="ControlFinanzas.Entity/ControlFinanzas.Entity.csproj" />
+  <Project Path="ControlFinanzas.UI/ControlFinanzas.UI.csproj" />
+</Solution>
