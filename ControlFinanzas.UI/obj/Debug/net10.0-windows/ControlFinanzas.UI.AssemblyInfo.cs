@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ControlFinanzas.UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12e9238deea909d8e90ee26f2a4ce600c431c975")]
 [assembly: System.Reflection.AssemblyProductAttribute("ControlFinanzas.UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ControlFinanzas.UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

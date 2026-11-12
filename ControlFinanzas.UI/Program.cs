@@ -1,6 +1,5 @@
-using System;
-using System.Windows.Forms;
 using ControlFinanzas.DAL.Common;
+using ControlFinanzas.Entity.Sesion;
 using ControlFinanzas.UI.Formularios;
 using ControlFinanzas.UI.Formularios.Seguridad;
 
@@ -39,14 +38,24 @@ namespace ControlFinanzas.UI
             Conexion.CadenaConexion = Conexion.ConstruirCadena(config);
 
             // 3. Autenticación de usuario (Login)
+            // FrmLogin internamente llama a SesionUsuario.IniciarSesion() al autenticar.
+            // Solo retorna DialogResult.OK si la sesión fue iniciada exitosamente.
             using (FrmLogin frmLogin = new FrmLogin())
             {
                 if (frmLogin.ShowDialog() != DialogResult.OK)
-                    return; // Cancela si falla el login o se cierra la ventana
+                {
+                    // Asegurar que no quede sesión residual si se cancela
+                    SesionUsuario.CerrarSesion();
+                    return;
+                }
             }
 
             // 4. Formulario Principal de la aplicación
-            Application.Run(new FrmInicio()); // Reemplaza por FrmMenu o FrmPrincipal según el nombre exacto de tu ventana principal
+            // La sesión activa (SesionUsuario) ya está disponible para todos los formularios.
+            Application.Run(new FrmInicio());
+
+            // 5. Al salir del Application.Run (cierre normal), purgar la sesión en memoria
+            SesionUsuario.CerrarSesion();
         }
     }
 }

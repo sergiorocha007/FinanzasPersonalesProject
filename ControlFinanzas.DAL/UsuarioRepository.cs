@@ -51,7 +51,7 @@ namespace ControlFinanzas.DAL
                     }
                 }
             }
-            return null; // Si no existe el usuario
+            return null;
         }
     }
 }

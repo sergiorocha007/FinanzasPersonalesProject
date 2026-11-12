@@ -1,17 +1,11 @@
-﻿using ControlFinanzas.BLL.Servicios;
+using ControlFinanzas.BLL.Servicios;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ControlFinanzas.UI.Formularios
 {
     public partial class FrmRegistro : Form
     {
-
         private readonly SeguridadService _seguridadService;
 
         public FrmRegistro()
@@ -27,14 +21,14 @@ namespace ControlFinanzas.UI.Formularios
             string pass = txtContrasena.Content.Trim();
             string confirmPass = txtConfirmarContrasena.Content.Trim();
 
-            // 1. Validaciones básicas en UI[cite: 2]
+            // 1. Validaciones básicas en UI
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Todos los campos son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Validar que las contraseñas coincidan[cite: 2]
+            // 2. Validar que las contraseñas coincidan
             if (pass != confirmPass)
             {
                 MessageBox.Show("Las contraseñas no coinciden. Intenta de nuevo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -47,7 +41,12 @@ namespace ControlFinanzas.UI.Formularios
             if (resultado == "OK")
             {
                 MessageBox.Show("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Cierra el registro y vuelve al Login automáticamente
+
+                // Limpiar todos los campos antes de cerrar (no dejar datos sensibles en memoria de controles)
+                LimpiarCampos();
+
+                // Cerrar y volver al Login (NO se inicia sesión automáticamente)
+                this.Close();
             }
             else
             {
@@ -57,7 +56,19 @@ namespace ControlFinanzas.UI.Formularios
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             this.Close();
+        }
+
+        /// <summary>
+        /// Purga todos los controles de texto para no dejar datos sensibles en memoria.
+        /// </summary>
+        private void LimpiarCampos()
+        {
+            txtNombre.Content = string.Empty;
+            txtEmail.Content = string.Empty;
+            txtContrasena.Content = string.Empty;
+            txtConfirmarContrasena.Content = string.Empty;
         }
     }
 }

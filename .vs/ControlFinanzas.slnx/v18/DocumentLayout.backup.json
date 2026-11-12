@@ -1,12 +1,67 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|c:\\users\\rocha\\desktop\\poo\\controlfinanzas\\controlfinanzas.ui\\formularios\\frmasignargastopresupuesto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|solutionrelative:controlfinanzas.ui\\formularios\\frmasignargastopresupuesto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\controlfinanzas.ui\\formularios\\frmasignargastopresupuesto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|solutionrelative:controlfinanzas.ui\\formularios\\frmasignargastopresupuesto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\controlfinanzas.ui\\formularios\\frmpresupuestos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FEBC6944-1572-5E00-3AF9-5252E712BA2F}|ControlFinanzas.UI\\ControlFinanzas.UI.csproj|solutionrelative:controlfinanzas.ui\\formularios\\frmpresupuestos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmAsignarGastoPresupuesto.cs",
+              "DocumentMoniker": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "RelativeDocumentMoniker": "ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "ToolTip": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "RelativeToolTip": "ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAnwFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-11T23:57:21.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmAsignarGastoPresupuesto.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "RelativeDocumentMoniker": "ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs",
+              "ToolTip": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ControlFinanzas.UI\\Formularios\\FrmAsignarGastoPresupuesto.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-11T23:57:11.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmPresupuestos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmPresupuestos.cs",
+              "RelativeDocumentMoniker": "ControlFinanzas.UI\\Formularios\\FrmPresupuestos.cs",
+              "ToolTip": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.UI\\Formularios\\FrmPresupuestos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ControlFinanzas.UI\\Formularios\\FrmPresupuestos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-11T23:57:07.436Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

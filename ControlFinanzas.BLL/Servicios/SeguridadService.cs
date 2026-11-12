@@ -1,11 +1,8 @@
-﻿using ControlFinanzas.DAL;
+using ControlFinanzas.DAL;
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using ControlFinanzas.Entity.Entidades;
-
-
 
 namespace ControlFinanzas.BLL.Servicios
 {
@@ -18,18 +15,30 @@ namespace ControlFinanzas.BLL.Servicios
             _usuarioRepository = new UsuarioRepository();
         }
 
-        // Método para el Login
-        public bool Autenticar(string email, string contrasenaPlana)
+        /// <summary>
+        /// Autentica al usuario y retorna el objeto UsuarioEntity completo si las credenciales son válidas.
+        /// Retorna null si el email no existe o la contraseña no coincide.
+        /// La capa UI es responsable de llamar a SesionUsuario.IniciarSesion() con el resultado.
+        /// </summary>
+        public UsuarioEntity Autenticar(string email, string contrasenaPlana)
         {
             UsuarioEntity usuario = _usuarioRepository.ObtenerPorEmail(email);
 
-            if (usuario == null) return false;
+            if (usuario == null) return null;
 
             string hashIngresado = EncriptarSHA256(contrasenaPlana);
-            return usuario.PasswordHash == hashIngresado;
+
+            // Si el hash no coincide, no retornar el objeto usuario
+            if (usuario.PasswordHash != hashIngresado)
+                return null;
+
+            return usuario;
         }
 
-        // Método para el Registro
+        /// <summary>
+        /// Registra un nuevo usuario. Retorna "OK" si fue exitoso, o un mensaje de error.
+        /// No inicia sesión automáticamente tras el registro para evitar sesiones cruzadas.
+        /// </summary>
         public string RegistrarUsuario(string nombre, string email, string contrasenaPlana)
         {
             // Regla de negocio: Verificar si el email ya existe

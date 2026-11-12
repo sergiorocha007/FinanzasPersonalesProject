@@ -1,11 +1,6 @@
-﻿using ControlFinanzas.BLL.Servicios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+using ControlFinanzas.BLL.Servicios;
+using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.Sesion;
 
 
 namespace ControlFinanzas.UI.Formularios
@@ -13,6 +8,7 @@ namespace ControlFinanzas.UI.Formularios
     public partial class FrmLogin : Form
     {
         private readonly SeguridadService _seguridadService;
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -21,15 +17,16 @@ namespace ControlFinanzas.UI.Formularios
 
         private void btnRegristarse_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Ocultamos el login
-            FrmRegistro frmRegistro = new FrmRegistro();
-            frmRegistro.ShowDialog();
-            this.Show();
+            using (var frmRegistro = new FrmRegistro())
+            {
+                frmRegistro.StartPosition = FormStartPosition.CenterParent;
+                frmRegistro.ShowDialog(this);  
+            }
         }
 
         private void cuiButton1_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Content.Trim(); // Usa .Content si usas CuoreUI
+            string email = txtEmail.Content.Trim();
             string contrasena = txtContrasena.Content.Trim();
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(contrasena))
@@ -38,13 +35,16 @@ namespace ControlFinanzas.UI.Formularios
                 return;
             }
 
-            // Llamada a la BLL[cite: 3]
-            bool esValido = _seguridadService.Autenticar(email, contrasena);
+            // Llamada a la BLL: ahora retorna el objeto completo o null
+            UsuarioEntity usuarioAutenticado = _seguridadService.Autenticar(email, contrasena);
 
-            if (esValido)
+            if (usuarioAutenticado != null)
             {
-                this.DialogResult = DialogResult.OK; // Retorna OK para abrir el Dashboard en Program.cs[cite: 3]
-                this.Close();
+                // Iniciar sesión con el objeto usuario completo (Id, Nombre, Email)
+                SesionUsuario.IniciarSesion(usuarioAutenticado);
+
+                this.DialogResult = DialogResult.OK;
+               
             }
             else
             {
@@ -59,5 +59,4 @@ namespace ControlFinanzas.UI.Formularios
 
         }
     }
-
 }
