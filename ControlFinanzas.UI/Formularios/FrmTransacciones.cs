@@ -20,13 +20,14 @@ namespace ControlFinanzas.UI.Formularios
         #region Campos
 
         private readonly TransaccionBLL _transaccionBLL;
-        private readonly CuentaDAO _cuentaDAO;
+        private readonly CuentaDAL _cuentaDAO;
         private readonly CategoriaDAL _categoriaDAL;
         private readonly int _usuarioIdLogueado;
 
-        private List<Cuenta> _cuentas = new();
+        private List<CuentaEntity> _cuentas = new();
         private List<CategoriaEntity> _categorias = new();
         private bool _cargando;
+        private bool _formularioInicializado;
 
         // Tipos de movimiento
         private const string TIPO_INGRESO = "Ingreso";
@@ -41,18 +42,42 @@ namespace ControlFinanzas.UI.Formularios
             InitializeComponent();
 
             _transaccionBLL = new TransaccionBLL(new TransaccionesDAL());
-            _cuentaDAO = new CuentaDAO();
+            _cuentaDAO = new CuentaDAL();
             _categoriaDAL = new CategoriaDAL();
             _usuarioIdLogueado = SesionUsuario.UsuarioId;
 
             ConfigurarDataGrid();
             InicializarControlesFormulario();
+
+            // Suscribir a eventos globales de finanzas para actualización en tiempo real
+            EventosFinanzas.CuentasCambiadas += OnCuentasCambiadas;
+            EventosFinanzas.TransaccionesCambiadas += OnTransaccionesCambiadas;
+            EventosFinanzas.CategoriasCambiadas += OnCategoriasCambiadas;
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            EventosFinanzas.CuentasCambiadas -= OnCuentasCambiadas;
+            EventosFinanzas.TransaccionesCambiadas -= OnTransaccionesCambiadas;
+            EventosFinanzas.CategoriasCambiadas -= OnCategoriasCambiadas;
+            base.OnFormClosed(e);
+        }
+
+        protected override async void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+
+            if (!this.Visible || IsDisposed || Disposing || _cargando || !_formularioInicializado)
+                return;
+
+            await CargarDatosYListadoAsync();
         }
 
         private async void FrmTransferencias_Load(object sender, EventArgs e)
         {
             ConectarEventos();
             await CargarDatosYListadoAsync();
+            _formularioInicializado = true;
         }
 
         #endregion
@@ -99,7 +124,7 @@ namespace ControlFinanzas.UI.Formularios
 
                 await Task.WhenAll(tareaCuentas, tareaCategorias);
 
-                _cuentas = tareaCuentas.Result ?? new List<Cuenta>();
+                _cuentas = tareaCuentas.Result ?? new List<CuentaEntity>();
                 _categorias = tareaCategorias.Result ?? new List<CategoriaEntity>();
 
                 LlenarComboCuentas(cmbCuentaOrigen);
@@ -126,13 +151,121 @@ namespace ControlFinanzas.UI.Formularios
 
         public Task RecargarAsync() => CargarDatosYListadoAsync();
 
+        #region Actualización en Tiempo Real
+
+        private void OnCuentasCambiadas(object? sender, EventArgs e)
+        {
+            if (this.IsDisposed || !this.IsHandleCreated) return;
+
+            if (this.InvokeRequired)
+                this.BeginInvoke(new Action(async () => await RefrescarCuentasAsync()));
+            else
+                _ = RefrescarCuentasAsync();
+        }
+
+        private async Task RefrescarCuentasAsync()
+        {
+            if (this.IsDisposed || !this.IsHandleCreated || _cargando) return;
+
+            try
+            {
+                var cuentasNuevas = await Task.Run(() => _cuentaDAO.ObtenerTodas(_usuarioIdLogueado));
+                if (this.IsDisposed || !this.IsHandleCreated) return;
+
+                _cuentas = cuentasNuevas ?? new List<CuentaEntity>();
+
+                string? origenSel = cmbCuentaOrigen.SelectedItem?.ToString();
+                string? destinoSel = cmbCuentaDestino.SelectedItem?.ToString();
+                string? filtroSel = cmbFiltrarCuenta.SelectedItem?.ToString();
+
+                LlenarComboCuentas(cmbCuentaOrigen);
+                LlenarComboCuentas(cmbCuentaDestino);
+                LlenarComboCuentas(cmbFiltrarCuenta, incluirTodas: true);
+
+                if (origenSel != null && cmbCuentaOrigen.Items.Contains(origenSel))
+                    cmbCuentaOrigen.SelectedItem = origenSel;
+                if (destinoSel != null && cmbCuentaDestino.Items.Contains(destinoSel))
+                    cmbCuentaDestino.SelectedItem = destinoSel;
+                if (filtroSel != null && cmbFiltrarCuenta.Items.Contains(filtroSel))
+                    cmbFiltrarCuenta.SelectedItem = filtroSel;
+
+                ActualizarSaldoOrigen();
+                ActualizarSaldoDestino();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al refrescar cuentas: {ex.Message}");
+            }
+        }
+
+        private void OnTransaccionesCambiadas(object? sender, EventArgs e)
+        {
+            if (this.IsDisposed || !this.IsHandleCreated) return;
+
+            if (this.InvokeRequired)
+                this.BeginInvoke(new Action(async () => await RefrescarHistorialAsync()));
+            else
+                _ = RefrescarHistorialAsync();
+        }
+
+        private async Task RefrescarHistorialAsync()
+        {
+            if (this.IsDisposed || !this.IsHandleCreated || _cargando) return;
+
+            try
+            {
+                int? cuentaId = ObtenerCuentaIdDesdeCombo(cmbFiltrarCuenta);
+                await CargarHistorialAsync(cuentaId);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al refrescar historial: {ex.Message}");
+            }
+        }
+
+        private void OnCategoriasCambiadas(object? sender, EventArgs e)
+        {
+            if (this.IsDisposed || !this.IsHandleCreated) return;
+
+            if (this.InvokeRequired)
+                this.BeginInvoke(new Action(async () => await RefrescarCategoriasAsync()));
+            else
+                _ = RefrescarCategoriasAsync();
+        }
+
+        private async Task RefrescarCategoriasAsync()
+        {
+            if (this.IsDisposed || !this.IsHandleCreated || _cargando) return;
+
+            try
+            {
+                var categoriasNuevas = await _categoriaDAL.ObtenerConFiltroAsync(_usuarioIdLogueado, null, "Todas");
+                if (this.IsDisposed || !this.IsHandleCreated) return;
+
+                _categorias = categoriasNuevas ?? new List<CategoriaEntity>();
+
+                string? categoriaSel = cmbCategoria.SelectedItem?.ToString();
+                string tipoActual = ObtenerTipoSeleccionado();
+                if (tipoActual != TIPO_TRANSFERENCIA)
+                {
+                    LlenarComboCategoriasPorTipo(tipoActual);
+                    if (categoriaSel != null && cmbCategoria.Items.Contains(categoriaSel))
+                        cmbCategoria.SelectedItem = categoriaSel;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al refrescar categorías: {ex.Message}");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Logica por Tipo de Movimiento
 
-        /// <summary>
-        /// Devuelve el tipo de movimiento actualmente seleccionado en el combo.
-        /// </summary>
+     
         private string ObtenerTipoSeleccionado()
         {
             if (cmbTipoMoviento.SelectedItem == null) return TIPO_TRANSFERENCIA;
@@ -389,11 +522,11 @@ namespace ControlFinanzas.UI.Formularios
                 : "$ 0.00";
         }
 
-        private decimal ObtenerDisponibleCuenta(Cuenta cuenta)
+        private decimal ObtenerDisponibleCuenta(CuentaEntity cuenta)
         {
             if (cuenta is TarjetaCredito tc)
                 return tc.LimiteCredito - tc.DeudaActual;
-            else if (cuenta is CuentaDebito cd)
+            else if (cuenta is CuentaDebitoEntity cd)
                 return cd.SaldoActual;
 
             return 0m;
@@ -455,7 +588,7 @@ namespace ControlFinanzas.UI.Formularios
             }
         }
 
-        /// <summary>Transfiere entre dos cuentas del usuario.</summary>
+        /// Transfiere entre dos cuentas del usuario.
         private async Task EjecutarTransferencia(decimal monto, string descripcion)
         {
             var cuentaOrigen = ObtenerCuentaDesdeCombo(cmbCuentaOrigen)!;
@@ -479,7 +612,7 @@ namespace ControlFinanzas.UI.Formularios
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        /// <summary>Registra un gasto: descuenta de la cuenta origen hacia una categoría de gasto.</summary>
+        /// descuenta de la cuenta origen hacia una categoría de gasto.
         private async Task EjecutarGasto(decimal monto, DateTime fecha, string descripcion)
         {
             var cuentaOrigen = ObtenerCuentaDesdeCombo(cmbCuentaOrigen)!;
@@ -506,7 +639,7 @@ namespace ControlFinanzas.UI.Formularios
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        /// <summary>Registra un ingreso: acredita a la cuenta destino desde una categoría de ingreso.</summary>
+        ///Registra un ingreso: acredita a la cuenta destino desde una categoría de ingreso.
         private async Task EjecutarIngreso(decimal monto, DateTime fecha, string descripcion)
         {
             var cuentaDestino = ObtenerCuentaDesdeCombo(cmbCuentaDestino)!;
@@ -622,7 +755,7 @@ namespace ControlFinanzas.UI.Formularios
 
         #region Helpers
 
-        private Cuenta? ObtenerCuentaDesdeCombo(cuiComboBox combo)
+        private CuentaEntity? ObtenerCuentaDesdeCombo(cuiComboBox combo)
         {
             if (combo.SelectedIndex < 0 || combo.SelectedItem == null) return null;
 

@@ -23,7 +23,8 @@ namespace ControlFinanzas.BLL
 
         public async Task<List<CategoriaEntity>> ObtenerConFiltroAsync(int usuarioId, string? buscar, string filtroTipo)
         {
-            return await _categoriaDAL.ObtenerConFiltroAsync(usuarioId, buscar, filtroTipo);
+            string tipoNormalizado = (string.IsNullOrWhiteSpace(filtroTipo) || filtroTipo == "Todos" || filtroTipo == "Todas") ? "Todas" : filtroTipo;
+            return await _categoriaDAL.ObtenerConFiltroAsync(usuarioId, buscar, tipoNormalizado);
         }
 
         public async Task<CategoriaKPI> ObtenerKPIsAsync(int usuarioId)
@@ -33,8 +34,11 @@ namespace ControlFinanzas.BLL
 
         public async Task<int> GuardarAsync(CategoriaEntity cat)
         {
-            // Asignar el ID de usuario desde la sesión actual
-            cat.AsignarUsuarioId(SesionUsuario.UsuarioId);
+            // Asignar el ID de usuario desde la sesión actual si no se asignó previamente
+            if (cat.UsuarioId <= 0 && SesionUsuario.HaySesionActiva)
+            {
+                cat.AsignarUsuarioId(SesionUsuario.UsuarioId);
+            }
 
             // Validar la entidad antes de interactuar con la BD[cite: 3]
             ValidarCategoria(cat);
@@ -46,6 +50,7 @@ namespace ControlFinanzas.BLL
                     throw new ApplicationException("No se pudo registrar la categoría en la base de datos.");
 
                 cat.AsignarId(nuevoId);
+                EventosFinanzas.NotificarCategoriasCambiadas();
                 return nuevoId;
             }
             else
@@ -54,6 +59,7 @@ namespace ControlFinanzas.BLL
                 if (!exito)
                     throw new ApplicationException("No se pudo actualizar la categoría. Verifique que aún exista.");
 
+                EventosFinanzas.NotificarCategoriasCambiadas();
                 return cat.Id;
             }
         }
@@ -68,6 +74,8 @@ namespace ControlFinanzas.BLL
 
             if (!exito)
                 throw new ApplicationException("No se pudo cambiar el estado de la categoría.");
+
+            EventosFinanzas.NotificarCategoriasCambiadas();
         }
 
         // ──────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 namespace ControlFinanzas.Entity.Entidades
 {
-    public class TarjetaCredito : Cuenta
+    public class TarjetaCredito : CuentaEntity
     {
         public decimal LimiteCredito { get; set; }
         public decimal DeudaActual { get; set; }

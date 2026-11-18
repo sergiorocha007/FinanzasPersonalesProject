@@ -55,12 +55,6 @@ namespace ControlFinanzas.UI.Formularios
             cuiButton2 = new CuoreUI.Controls.cuiButton();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             dgvCuentas = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             ComboboxBuscarPorTipo = new CuoreUI.Controls.cuiComboBox();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             cuiPanel5 = new CuoreUI.Controls.cuiPanel();
@@ -88,6 +82,12 @@ namespace ControlFinanzas.UI.Formularios
             label4 = new Label();
             cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
             label3 = new Label();
+            ID = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             pnlCardLiquidez.SuspendLayout();
             pnlCardDeuda.SuspendLayout();
             pnlCardCredito.SuspendLayout();
@@ -122,6 +122,7 @@ namespace ControlFinanzas.UI.Formularios
             // 
             // pnlCardLiquidez
             // 
+            pnlCardLiquidez.BackColor = Color.Transparent;
             pnlCardLiquidez.Controls.Add(lblMontoLiquidez);
             pnlCardLiquidez.Controls.Add(lblTituloLiquidez);
             pnlCardLiquidez.Location = new Point(20, 92);
@@ -159,6 +160,7 @@ namespace ControlFinanzas.UI.Formularios
             // 
             // pnlCardDeuda
             // 
+            pnlCardDeuda.BackColor = Color.Transparent;
             pnlCardDeuda.Controls.Add(lblMontoDeuda);
             pnlCardDeuda.Controls.Add(lblTituloDeuda);
             pnlCardDeuda.Location = new Point(400, 92);
@@ -196,6 +198,7 @@ namespace ControlFinanzas.UI.Formularios
             // 
             // pnlCardCredito
             // 
+            pnlCardCredito.BackColor = Color.Transparent;
             pnlCardCredito.Controls.Add(lblMontoCredito);
             pnlCardCredito.Controls.Add(lblTituloCredito);
             pnlCardCredito.Location = new Point(776, 92);
@@ -326,41 +329,11 @@ namespace ControlFinanzas.UI.Formularios
             // dgvCuentas
             // 
             dgvCuentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCuentas.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dgvCuentas.Columns.AddRange(new DataGridViewColumn[] { ID, Column2, Column3, Column4, Column5, Column6 });
             dgvCuentas.Location = new Point(12, 118);
             dgvCuentas.Name = "dgvCuentas";
             dgvCuentas.Size = new Size(676, 270);
             dgvCuentas.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "ID";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Nombre";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Tipo";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Moneda";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Saldo/Deuda";
-            Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Estado";
-            Column6.Name = "Column6";
             // 
             // ComboboxBuscarPorTipo
             // 
@@ -937,6 +910,38 @@ namespace ControlFinanzas.UI.Formularios
             label3.TabIndex = 1;
             label3.Text = "Nueva Cuenta";
             // 
+            // ID
+            // 
+            ID.HeaderText = "Id";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Nombre";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Tipo";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Moneda";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Saldo/Deuda";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Estado";
+            Column6.Name = "Column6";
+            // 
             // FrmCuentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -984,12 +989,6 @@ namespace ControlFinanzas.UI.Formularios
         private CuoreUI.Controls.cuiPanel cuiPanel5;
         private CuoreUI.Controls.cuiComboBox ComboboxBuscarPorTipo;
         private DataGridView dgvCuentas;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
         private CuoreUI.Controls.cuiButton cuiButton2;
         private CuoreUI.Controls.cuiButton cuiButton1;
         private Label label3;
@@ -1024,5 +1023,11 @@ namespace ControlFinanzas.UI.Formularios
         private Label lblMontoDeuda;
         private Label lblMontoCredito;
         private Label lblTituloCredito;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

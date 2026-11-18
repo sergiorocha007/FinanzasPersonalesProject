@@ -261,22 +261,17 @@
             cuiComboBox2.ExpandArrowColor = Color.DimGray;
             cuiComboBox2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cuiComboBox2.ForeColor = Color.Gray;
-            cuiComboBox2.Items = new string[]
-    {
-    "Efectivo",
-    "Debito",
-    "Credito"
-    };
+            cuiComboBox2.Items = new string[0];
             cuiComboBox2.Location = new Point(12, 85);
             cuiComboBox2.Margin = new Padding(5, 4, 5, 4);
             cuiComboBox2.MaxDropDownHeight = 240;
             cuiComboBox2.Name = "cuiComboBox2";
-            cuiComboBox2.NoSelectionText = "None";
+            cuiComboBox2.NoSelectionText = "Seleccione categoría";
             cuiComboBox2.OutlineColor = Color.FromArgb(64, 128, 128, 128);
             cuiComboBox2.OutlineThickness = 1F;
             cuiComboBox2.Rounding = 8;
-            cuiComboBox2.SelectedIndex = 0;
-            cuiComboBox2.SelectedItem = "Efectivo";
+            cuiComboBox2.SelectedIndex = -1;
+            cuiComboBox2.SelectedItem = "";
             cuiComboBox2.Size = new Size(432, 36);
             cuiComboBox2.SortAlphabetically = false;
             cuiComboBox2.TabIndex = 6;
@@ -306,6 +301,7 @@
             // 
             // flpTarjetas
             // 
+            flpTarjetas.AutoScroll = true;
             flpTarjetas.BackColor = Color.White;
             flpTarjetas.Location = new Point(499, 107);
             flpTarjetas.Name = "flpTarjetas";

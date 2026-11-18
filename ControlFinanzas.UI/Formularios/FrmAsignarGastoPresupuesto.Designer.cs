@@ -35,10 +35,10 @@
             btnConfirmarTransferencia = new CuoreUI.Controls.cuiButton();
             nudDineroATransferir = new NumericUpDown();
             label5 = new Label();
-            cmbCategoriaGasto = new CuoreUI.Controls.cuiComboBox();
             label2 = new Label();
-            cmbCuentaOrigen = new CuoreUI.Controls.cuiComboBox();
             label4 = new Label();
+            cmbCuentaOrigen = new ComboBox();
+            cmbCategoriaGasto = new ComboBox();
             cuiPanel1.SuspendLayout();
             cuiPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudDineroATransferir).BeginInit();
@@ -70,13 +70,13 @@
             // cuiPanel2
             // 
             cuiPanel2.BackColor = Color.Transparent;
+            cuiPanel2.Controls.Add(cmbCategoriaGasto);
+            cuiPanel2.Controls.Add(cmbCuentaOrigen);
             cuiPanel2.Controls.Add(btnCancelar);
             cuiPanel2.Controls.Add(btnConfirmarTransferencia);
             cuiPanel2.Controls.Add(nudDineroATransferir);
             cuiPanel2.Controls.Add(label5);
-            cuiPanel2.Controls.Add(cmbCategoriaGasto);
             cuiPanel2.Controls.Add(label2);
-            cuiPanel2.Controls.Add(cmbCuentaOrigen);
             cuiPanel2.Controls.Add(label4);
             cuiPanel2.Location = new Point(5, 74);
             cuiPanel2.Name = "cuiPanel2";
@@ -168,13 +168,16 @@
             // nudDineroATransferir
             // 
             nudDineroATransferir.BorderStyle = BorderStyle.FixedSingle;
+            nudDineroATransferir.DecimalPlaces = 2;
             nudDineroATransferir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudDineroATransferir.Increment = new decimal(new int[] { 50, 0, 0, 0 });
-            nudDineroATransferir.Location = new Point(7, 222);
+            nudDineroATransferir.Increment = new decimal(new int[] { 10, 0, 0, 0 });
+            nudDineroATransferir.Location = new Point(4, 222);
+            nudDineroATransferir.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             nudDineroATransferir.Name = "nudDineroATransferir";
-            nudDineroATransferir.Size = new Size(244, 29);
+            nudDineroATransferir.Size = new Size(378, 29);
             nudDineroATransferir.TabIndex = 17;
             nudDineroATransferir.TextAlign = HorizontalAlignment.Center;
+            nudDineroATransferir.ThousandsSeparator = true;
             // 
             // label5
             // 
@@ -188,35 +191,6 @@
             label5.TabIndex = 16;
             label5.Text = "Monto A Gastar";
             // 
-            // cmbCategoriaGasto
-            // 
-            cmbCategoriaGasto.BackColor = Color.Transparent;
-            cmbCategoriaGasto.BackgroundColor = Color.FromArgb(255, 255, 255);
-            cmbCategoriaGasto.DropDownBackgroundColor = Color.White;
-            cmbCategoriaGasto.DropDownForeColor = Color.FromArgb(27, 27, 27);
-            cmbCategoriaGasto.ExpandArrowColor = Color.DimGray;
-            cmbCategoriaGasto.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbCategoriaGasto.ForeColor = Color.DimGray;
-            cmbCategoriaGasto.Items = new string[]
-    {
-    "Efectivo",
-    "Debito",
-    "Credito"
-    };
-            cmbCategoriaGasto.Location = new Point(4, 136);
-            cmbCategoriaGasto.Margin = new Padding(5, 4, 5, 4);
-            cmbCategoriaGasto.MaxDropDownHeight = 240;
-            cmbCategoriaGasto.Name = "cmbCategoriaGasto";
-            cmbCategoriaGasto.NoSelectionText = "None";
-            cmbCategoriaGasto.OutlineColor = Color.FromArgb(64, 64, 64);
-            cmbCategoriaGasto.OutlineThickness = 1F;
-            cmbCategoriaGasto.Rounding = 8;
-            cmbCategoriaGasto.SelectedIndex = 0;
-            cmbCategoriaGasto.SelectedItem = "Efectivo";
-            cmbCategoriaGasto.Size = new Size(378, 36);
-            cmbCategoriaGasto.SortAlphabetically = false;
-            cmbCategoriaGasto.TabIndex = 12;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -229,35 +203,6 @@
             label2.TabIndex = 11;
             label2.Text = "Categoria de Gasto";
             // 
-            // cmbCuentaOrigen
-            // 
-            cmbCuentaOrigen.BackColor = Color.Transparent;
-            cmbCuentaOrigen.BackgroundColor = Color.FromArgb(255, 255, 255);
-            cmbCuentaOrigen.DropDownBackgroundColor = Color.White;
-            cmbCuentaOrigen.DropDownForeColor = Color.FromArgb(27, 27, 27);
-            cmbCuentaOrigen.ExpandArrowColor = Color.DimGray;
-            cmbCuentaOrigen.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            cmbCuentaOrigen.ForeColor = Color.DimGray;
-            cmbCuentaOrigen.Items = new string[]
-    {
-    "Efectivo",
-    "Debito",
-    "Credito"
-    };
-            cmbCuentaOrigen.Location = new Point(4, 48);
-            cmbCuentaOrigen.Margin = new Padding(5, 4, 5, 4);
-            cmbCuentaOrigen.MaxDropDownHeight = 240;
-            cmbCuentaOrigen.Name = "cmbCuentaOrigen";
-            cmbCuentaOrigen.NoSelectionText = "None";
-            cmbCuentaOrigen.OutlineColor = Color.FromArgb(64, 64, 64);
-            cmbCuentaOrigen.OutlineThickness = 1F;
-            cmbCuentaOrigen.Rounding = 8;
-            cmbCuentaOrigen.SelectedIndex = 0;
-            cmbCuentaOrigen.SelectedItem = "Efectivo";
-            cmbCuentaOrigen.Size = new Size(378, 36);
-            cmbCuentaOrigen.SortAlphabetically = false;
-            cmbCuentaOrigen.TabIndex = 10;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -269,6 +214,26 @@
             label4.Size = new Size(130, 20);
             label4.TabIndex = 9;
             label4.Text = "Cuenta de Origen";
+            // 
+            // cmbCuentaOrigen
+            // 
+            cmbCuentaOrigen.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            cmbCuentaOrigen.ForeColor = Color.FromArgb(64, 64, 64);
+            cmbCuentaOrigen.FormattingEnabled = true;
+            cmbCuentaOrigen.Location = new Point(14, 54);
+            cmbCuentaOrigen.Name = "cmbCuentaOrigen";
+            cmbCuentaOrigen.Size = new Size(350, 28);
+            cmbCuentaOrigen.TabIndex = 20;
+            // 
+            // cmbCategoriaGasto
+            // 
+            cmbCategoriaGasto.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            cmbCategoriaGasto.ForeColor = Color.FromArgb(64, 64, 64);
+            cmbCategoriaGasto.FormattingEnabled = true;
+            cmbCategoriaGasto.Location = new Point(14, 146);
+            cmbCategoriaGasto.Name = "cmbCategoriaGasto";
+            cmbCategoriaGasto.Size = new Size(350, 28);
+            cmbCategoriaGasto.TabIndex = 21;
             // 
             // FrmAsignarGastoPresupuesto
             // 
@@ -296,13 +261,13 @@
         private CuoreUI.Controls.cuiPanel cuiPanel1;
         private Label label1;
         private CuoreUI.Controls.cuiPanel cuiPanel2;
-        private CuoreUI.Controls.cuiComboBox cmbCategoriaGasto;
         private Label label2;
-        private CuoreUI.Controls.cuiComboBox cmbCuentaOrigen;
         private Label label4;
         private NumericUpDown nudDineroATransferir;
         private Label label5;
         private CuoreUI.Controls.cuiButton btnCancelar;
         private CuoreUI.Controls.cuiButton btnConfirmarTransferencia;
+        private ComboBox cmbCategoriaGasto;
+        private ComboBox cmbCuentaOrigen;
     }
 }

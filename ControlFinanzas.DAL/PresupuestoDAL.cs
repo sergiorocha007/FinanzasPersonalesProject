@@ -11,16 +11,16 @@ namespace ControlFinanzas.DAL
         {
             return new PresupuestoDTO
             {
-                IdPresupuesto = Convert.ToInt32(dr["IdPresupuesto"]),
-                CategoriaId = Convert.ToInt32(dr["CategoriaId"]),
-                CategoriaNombre = dr["CategoriaNombre"].ToString()!,
+                IdPresupuesto = dr["IdPresupuesto"] != DBNull.Value ? Convert.ToInt32(dr["IdPresupuesto"]) : 0,
+                CategoriaId = dr["CategoriaId"] != DBNull.Value ? Convert.ToInt32(dr["CategoriaId"]) : 0,
+                CategoriaNombre = dr["CategoriaNombre"] != DBNull.Value ? dr["CategoriaNombre"].ToString()! : string.Empty,
                 ColorHex = dr["ColorHex"] != DBNull.Value ? dr["ColorHex"].ToString()! : "#808080",
-                Mes = Convert.ToByte(dr["Mes"]),
-                Anio = Convert.ToInt16(dr["Anio"]),
-                LimiteMensual = Convert.ToDecimal(dr["LimiteMensual"]),
-                GastoActual = Convert.ToDecimal(dr["GastoActual"]),
-                Restante = Convert.ToDecimal(dr["Restante"]),
-                PorcentajeConsumido = Convert.ToDecimal(dr["PorcentajeConsumido"])
+                Mes = dr["Mes"] != DBNull.Value ? Convert.ToByte(dr["Mes"]) : (byte)1,
+                Anio = dr["Anio"] != DBNull.Value ? Convert.ToInt16(dr["Anio"]) : (short)DateTime.Now.Year,
+                LimiteMensual = dr["LimiteMensual"] != DBNull.Value ? Convert.ToDecimal(dr["LimiteMensual"]) : 0m,
+                GastoActual = dr["GastoActual"] != DBNull.Value ? Convert.ToDecimal(dr["GastoActual"]) : 0m,
+                Restante = dr["Restante"] != DBNull.Value ? Convert.ToDecimal(dr["Restante"]) : 0m,
+                PorcentajeConsumido = dr["PorcentajeConsumido"] != DBNull.Value ? Convert.ToDecimal(dr["PorcentajeConsumido"]) : 0m
             };
         }
 
@@ -40,7 +40,7 @@ namespace ControlFinanzas.DAL
 
                 await cn.OpenAsync();
                 object? result = await cmd.ExecuteScalarAsync();
-                return Convert.ToInt32(result);
+                return (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
             }
             catch (Exception ex)
             {

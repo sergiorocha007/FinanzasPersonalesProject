@@ -9,10 +9,7 @@ namespace ControlFinanzas.BLL
 
         
         public static event EventHandler? TransferenciaEjecutada;
-        /// <summary>
-        /// Se dispara cuando se registra un Ingreso o un Gasto,
-        /// para que otros formularios (ej. FrmCuentas) actualicen sus saldos.
-        /// </summary>
+
         public static event EventHandler? MovimientoRegistrado;
 
         private static void NotificarTransferenciaEjecutada()
@@ -34,7 +31,14 @@ namespace ControlFinanzas.BLL
         {
             int nuevoId = await _transaccionesDAL.AgregarAsync(usuarioId, transaccion);
 
-            // Notificar a FrmCuentas y otros suscriptores para que refresquen saldos
+            // Notificar a través del bus centralizado y eventos legacy
+            EventosFinanzas.NotificarCuentasCambiadas();
+            EventosFinanzas.NotificarTransaccionesCambiadas();
+            if (string.Equals(transaccion.TipoTransaccion, "Gasto", StringComparison.OrdinalIgnoreCase))
+            {
+                EventosFinanzas.NotificarPresupuestosCambiados();
+            }
+
             NotificarMovimientoRegistrado();
 
             return nuevoId;
@@ -59,6 +63,11 @@ namespace ControlFinanzas.BLL
                 throw new ArgumentException("ID de transacción inválido.");
 
             await _transaccionesDAL.EliminarTransferenciaAsync(idTransaccion, usuarioId);
+
+            EventosFinanzas.NotificarCuentasCambiadas();
+            EventosFinanzas.NotificarTransaccionesCambiadas();
+            EventosFinanzas.NotificarPresupuestosCambiados();
+            NotificarMovimientoRegistrado();
         }
 
         public async Task<Guid> EjecutarTransferenciaAsync(int usuarioId, int cuentaOrigenId, int cuentaDestinoId, decimal monto, string descripcion)
@@ -78,6 +87,8 @@ namespace ControlFinanzas.BLL
             Guid refId = await _transaccionesDAL.EjecutarTransferenciaAsync(usuarioId, cuentaOrigenId, cuentaDestinoId, monto, descripcion);
 
             // Notificar a todos los formularios suscritos que hubo una transferencia exitosa
+            EventosFinanzas.NotificarCuentasCambiadas();
+            EventosFinanzas.NotificarTransaccionesCambiadas();
             NotificarTransferenciaEjecutada();
 
             return refId;

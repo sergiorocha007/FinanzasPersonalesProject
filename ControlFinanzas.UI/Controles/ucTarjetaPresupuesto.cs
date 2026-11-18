@@ -7,13 +7,28 @@ namespace ControlFinanzas.UI.Controles
 {
     public partial class ucTarjetaPresupuesto : UserControl
     {
+        public PresupuestoDTO? PresupuestoActual { get; private set; }
+
         public ucTarjetaPresupuesto()
         {
             InitializeComponent();
+            PropagarEventosClick();
+        }
+
+        private void PropagarEventosClick()
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Click += (s, e) => this.OnClick(e);
+                c.Cursor = Cursors.Hand;
+            }
+            this.Cursor = Cursors.Hand;
         }
 
         public void CargarDatos(PresupuestoDTO p)
         {
+            PresupuestoActual = p;
+
             lblCategoria.Text = p.CategoriaNombre;
             lblDetalle.Text = $"Gastado: {p.GastoActual:C2} / Límite: {p.LimiteMensual:C2}";
 
@@ -32,17 +47,17 @@ namespace ControlFinanzas.UI.Controles
             Color colorEstado;
             if (porcentaje < 50)
             {
-                // Verde: poco gasto
+                // Verde: poco gasto (< 50%)
                 colorEstado = Color.FromArgb(34, 197, 94);
             }
             else if (porcentaje < 80)
             {
-                // Naranja: mitad o pasando la mitad
+                // Naranja: consumo moderado (50% - 79%)
                 colorEstado = Color.FromArgb(239, 152, 39);
             }
             else
             {
-                // Rojo: cerca del limite o superado
+                // Rojo: cerca del límite o excedido (>= 80%)
                 colorEstado = Color.FromArgb(239, 68, 68);
             }
 
@@ -50,9 +65,9 @@ namespace ControlFinanzas.UI.Controles
             lblRestante.ForeColor = colorEstado;
             pnlProgreso.BackColor = colorEstado;
 
-            // Calcular ancho de la barra de progreso proporcional al porcentaje (maximo 100%)
+            // Calcular ancho de la barra de progreso proporcional al porcentaje (entre 0% y 100%)
             int anchoTotal = pnlFondoBarra.Width;
-            float factor = (float)Math.Min(porcentaje, 100m) / 100f;
+            float factor = Math.Max(0f, (float)Math.Min(porcentaje, 100m) / 100f);
             pnlProgreso.Width = (int)(anchoTotal * factor);
         }
     }

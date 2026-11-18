@@ -23,6 +23,8 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
 
         private FrmPresupuestos _presupuesto;
 
+        private FrmMetasAhorro _metasAhorro;
+
         private readonly int _usuarioIdLogueado;
 
         private void AbrirFormularioHijo(Form formularioHijo, string rutaNavegacion)
@@ -48,13 +50,15 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
         private void cuiButton2_Click(object sender, EventArgs e)
         {
             // Carga FrmCuentas dentro del pnlContenedor
-            _cuentas ??= new FrmCuentas();
+            if (_cuentas == null || _cuentas.IsDisposed)
+                _cuentas = new FrmCuentas();
             AbrirFormularioHijo(_cuentas, "Cuentas y Tarjetas");
         }
 
         private void cuiButton4_Click(object sender, EventArgs e)
         {
-            _categorias ??= new FrmCategorias(_usuarioIdLogueado);
+            if (_categorias == null || _categorias.IsDisposed)
+                _categorias = new FrmCategorias(_usuarioIdLogueado);
             AbrirFormularioHijo(_categorias, "Categorias");
         }
 
@@ -72,9 +76,14 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
             if (formularioActivo != null)
             {
                 pnlContenedor.Controls.Remove(formularioActivo);
-                formularioActivo.Dispose();
                 formularioActivo = null;
             }
+
+            _cuentas?.Dispose();
+            _categorias?.Dispose();
+            _Transacciones?.Dispose();
+            _presupuesto?.Dispose();
+            _metasAhorro?.Dispose();
 
             SesionUsuario.CerrarSesion();
 
@@ -83,14 +92,26 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
 
         private void cuiButton3_Click(object sender, EventArgs e)
         {
-            _Transacciones ??= new FrmTransacciones(_usuarioIdLogueado);
+            if (_Transacciones == null || _Transacciones.IsDisposed)
+                _Transacciones = new FrmTransacciones(_usuarioIdLogueado);
             AbrirFormularioHijo(_Transacciones, "Transacciones");
         }
 
         private void btnPresupuesto_Click(object sender, EventArgs e)
         {
-            _presupuesto ??= new FrmPresupuestos();
+            if (_presupuesto == null || _presupuesto.IsDisposed)
+            {
+                _presupuesto = new FrmPresupuestos();
+            }
+
             AbrirFormularioHijo(_presupuesto, "Presupuestos");
+        }
+
+        private void btnMetasAhorro_Click(object sender, EventArgs e)
+        {
+            if (_metasAhorro == null || _metasAhorro.IsDisposed)
+                _metasAhorro = new FrmMetasAhorro();
+            AbrirFormularioHijo(_metasAhorro, "Metas Ahorro");
         }
     }
 }

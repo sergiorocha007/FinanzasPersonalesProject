@@ -1,6 +1,6 @@
 namespace ControlFinanzas.Entity.Entidades
 {
-    public abstract class Cuenta
+    public abstract class CuentaEntity
     {
         public int Id { get; set; }
         public int UsuarioId { get; set; }

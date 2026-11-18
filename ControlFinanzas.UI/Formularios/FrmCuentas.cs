@@ -29,7 +29,7 @@ namespace ControlFinanzas.UI.Formularios
         // Guard para evitar que eventos de CuoreUI disparen logica antes de que el form cargue
         private bool _formularioInicializado = false;
 
-        private List<Cuenta> _listaCuentas = new List<Cuenta>();
+        private List<CuentaEntity> _listaCuentas = new List<CuentaEntity>();
 
         public FrmCuentas()
         {
@@ -39,18 +39,66 @@ namespace ControlFinanzas.UI.Formularios
             ConfigurarEstiloGrid();
             SuscribirEventos();
 
-            // Escuchar transferencias exitosas para refrescar cuentas en tiempo real
+            // Escuchar cambios en cuentas en tiempo real (abonos a metas, reembolsos, transferencias, ingresos, gastos)
+            EventosFinanzas.CuentasCambiadas += OnCuentasCambiadas;
             TransaccionBLL.TransferenciaEjecutada += OnTransferenciaEjecutada;
-            // Escuchar ingresos y gastos para refrescar saldos en tiempo real
             TransaccionBLL.MovimientoRegistrado += OnTransferenciaEjecutada;
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             // Desuscribir para evitar memory leaks
+            EventosFinanzas.CuentasCambiadas -= OnCuentasCambiadas;
             TransaccionBLL.TransferenciaEjecutada -= OnTransferenciaEjecutada;
             TransaccionBLL.MovimientoRegistrado -= OnTransferenciaEjecutada;
             base.OnFormClosed(e);
+        }
+
+        private void OnCuentasCambiadas(object? sender, EventArgs e)
+        {
+            if (this.IsDisposed || !this.IsHandleCreated) return;
+
+            if (this.InvokeRequired)
+                this.BeginInvoke(new Action(RefrescarCuentasYKPIs));
+            else
+                RefrescarCuentasYKPIs();
+        }
+
+        public void RefrescarCuentasYKPIs()
+        {
+            if (this.IsDisposed || !this.IsHandleCreated) return;
+
+            string termino = cuiTextBox1?.Content?.Trim() ?? string.Empty;
+            string tipo = ComboboxBuscarPorTipo?.SelectedItem?.ToString() ?? string.Empty;
+
+            if (string.IsNullOrEmpty(termino) && (string.IsNullOrEmpty(tipo) || tipo == "Todos"))
+            {
+                CargarCuentas();
+            }
+            else
+            {
+                try
+                {
+                    _listaCuentas = _cuentaBLL.ObtenerTodas();
+                    FiltrarCuentas();
+                }
+                catch
+                {
+                    CargarCuentas();
+                }
+            }
+
+            CargarTarjetasKPI();
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+
+            if (!this.Visible || IsDisposed || Disposing || !_formularioInicializado)
+                return;
+
+            RefrescarCuentasYKPIs();
         }
 
         private void OnTransferenciaEjecutada(object? sender, EventArgs e)
@@ -59,15 +107,9 @@ namespace ControlFinanzas.UI.Formularios
             if (this.IsDisposed || !this.IsHandleCreated) return;
 
             if (this.InvokeRequired)
-                this.Invoke(RefrescarTrasTransferencia);
+                this.BeginInvoke(new Action(RefrescarCuentasYKPIs));
             else
-                RefrescarTrasTransferencia();
-        }
-
-        private void RefrescarTrasTransferencia()
-        {
-            CargarCuentas();
-            CargarTarjetasKPI();
+                RefrescarCuentasYKPIs();
         }
 
         private void FrmCuentas_Load(object sender, EventArgs e)
@@ -84,16 +126,10 @@ namespace ControlFinanzas.UI.Formularios
 
         private void SuscribirEventos()
         {
-
             cuiTextBox1.ContentChanged += txtBuscar_ContentChanged;
-
             cuiComboBox2.SelectedIndexChanged += cmbTipoCuenta_SelectedItemChanged;
-
-
             cuiButton3.Click += btnGuardar_Click;
             cuiButton4.Click += btnCancelar_Click;
-
-
             cuiButton1.Click += btnEditar_Click;
             cuiButton2.Click += btnDesactivarActivar_Click;
         }
@@ -112,11 +148,11 @@ namespace ControlFinanzas.UI.Formularios
             }
         }
 
-        private void MostrarEnGrid(List<Cuenta> cuentas)
+        private void MostrarEnGrid(List<CuentaEntity> cuentas)
         {
             dgvCuentas.Rows.Clear();
 
-            foreach (Cuenta c in cuentas)
+            foreach (CuentaEntity c in cuentas)
             {
                 string saldoMostrar = c.ObtenerSaldoMostrar().ToString("N2");
                 string estado = c.Estado ? "Activa" : "Inactiva";
@@ -183,7 +219,7 @@ namespace ControlFinanzas.UI.Formularios
             string termino = cuiTextBox1.Content?.Trim() ?? string.Empty;
             string tipo = ComboboxBuscarPorTipo.SelectedItem?.ToString() ?? string.Empty;
 
-            IEnumerable<ControlFinanzas.Entity.Entidades.Cuenta> consulta = _listaCuentas;
+            IEnumerable<ControlFinanzas.Entity.Entidades.CuentaEntity> consulta = _listaCuentas;
 
             if (!string.IsNullOrEmpty(termino))
             {
@@ -246,7 +282,7 @@ namespace ControlFinanzas.UI.Formularios
                 bool estado = cuiCheckbox1.Checked;
 
                 // Polimorfismo de creación: instancia la subclase correcta
-                Cuenta cuenta;
+                CuentaEntity cuenta;
 
                 if (tipo == "Credito")
                 {
@@ -275,7 +311,7 @@ namespace ControlFinanzas.UI.Formularios
                     if (!decimal.TryParse(cuiTextBox3.Content, out decimal saldo))
                         throw new ArgumentException("El Saldo Actual debe ser un número válido.");
 
-                    cuenta = new CuentaDebito
+                    cuenta = new CuentaDebitoEntity
                     {
                         SaldoActual = saldo
                     };
@@ -329,10 +365,10 @@ namespace ControlFinanzas.UI.Formularios
             }
 
             DataGridViewRow fila = dgvCuentas.SelectedRows[0];
-            _cuentaIdSeleccionada = Convert.ToInt32(fila.Cells["Column1"].Value);
+            _cuentaIdSeleccionada = Convert.ToInt32(fila.Cells["ID"].Value);
 
             // Buscar el objeto en la lista en memoria para rellenar todos los campos
-            Cuenta cuenta = _listaCuentas.Find(c => c.Id == _cuentaIdSeleccionada);
+            CuentaEntity cuenta = _listaCuentas.Find(c => c.Id == _cuentaIdSeleccionada);
             if (cuenta == null)
             {
                 MessageBox.Show("No se encontró la cuenta seleccionada.", "Error",
@@ -356,7 +392,7 @@ namespace ControlFinanzas.UI.Formularios
                 txtDiaCorte.Content = tc.DiaCorte.ToString();
                 txtDiaPago.Content = tc.DiaPago.ToString();
             }
-            else if (cuenta is CuentaDebito cd)
+            else if (cuenta is CuentaDebitoEntity cd)
             {
                 cuiTextBox3.Content = cd.SaldoActual.ToString("N2");
             }

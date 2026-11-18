@@ -1,6 +1,6 @@
 namespace ControlFinanzas.Entity.Entidades
 {
-    public class CuentaDebito : Cuenta
+    public class CuentaDebitoEntity : CuentaEntity
     {
         
         public decimal SaldoActual { get; set; }

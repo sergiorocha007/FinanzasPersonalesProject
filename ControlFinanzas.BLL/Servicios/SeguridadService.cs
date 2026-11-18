@@ -12,7 +12,7 @@ namespace ControlFinanzas.BLL.Servicios
 
         public SeguridadService()
         {
-            _usuarioRepository = new UsuarioRepository();
+            _usuarioRepository = new UsuarioDAL();
         }
 
         /// <summary>

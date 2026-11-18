@@ -5,7 +5,7 @@ using System;
 
 namespace ControlFinanzas.DAL
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioDAL : IUsuarioRepository
     {
 
         public bool Insertar(UsuarioEntity usuario)

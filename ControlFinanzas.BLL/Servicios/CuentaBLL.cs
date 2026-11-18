@@ -7,14 +7,14 @@ namespace ControlFinanzas.BLL.Servicios
 
     public class CuentaBLL
     {
-        private readonly CuentaDAO _cuentaDAO;
+        private readonly CuentaDAL _cuentaDAO;
 
         public CuentaBLL()
         {
-            _cuentaDAO = new CuentaDAO();
+            _cuentaDAO = new CuentaDAL();
 
         }
-        public string Guardar(Cuenta cuenta)
+        public string Guardar(CuentaEntity cuenta)
         {
             cuenta.UsuarioId = SesionUsuario.UsuarioId;
 
@@ -26,6 +26,11 @@ namespace ControlFinanzas.BLL.Servicios
             else
                 exito = _cuentaDAO.Actualizar(cuenta);
 
+            if (exito)
+            {
+                EventosFinanzas.NotificarCuentasCambiadas();
+            }
+
             return exito ? "OK" : "No se pudo guardar la cuenta en la base de datos.";
         }
 
@@ -36,22 +41,26 @@ namespace ControlFinanzas.BLL.Servicios
                 throw new ArgumentException("Debe seleccionar una cuenta válida para cambiar su estado.");
 
             bool exito = _cuentaDAO.DesactivarActivar(id, SesionUsuario.UsuarioId);
+            if (exito)
+            {
+                EventosFinanzas.NotificarCuentasCambiadas();
+            }
             return exito ? "OK" : "No se pudo cambiar el estado de la cuenta.";
         }
 
-        public List<Cuenta> ObtenerTodas()
+        public List<CuentaEntity> ObtenerTodas()
         {
             return _cuentaDAO.ObtenerTodas(SesionUsuario.UsuarioId);
         }
 
 
-        public List<Cuenta> BuscarPorNombre(string nombre)
+        public List<CuentaEntity> BuscarPorNombre(string nombre)
         {
             return _cuentaDAO.BuscarPorNombre(nombre, SesionUsuario.UsuarioId);
         }
 
 
-        private void ValidarCuenta(Cuenta cuenta)
+        private void ValidarCuenta(CuentaEntity cuenta)
         {
             
             if (string.IsNullOrWhiteSpace(cuenta.Nombre))
@@ -77,7 +86,7 @@ namespace ControlFinanzas.BLL.Servicios
             }
 
             
-            if (cuenta is CuentaDebito cd)
+            if (cuenta is CuentaDebitoEntity cd)
             {
                 if (cd.SaldoActual < 0)
                     throw new ArgumentException("El Saldo Actual no puede ser negativo.");

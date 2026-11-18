@@ -1,689 +1,750 @@
-// ControlFinanzas - Módulo Gestión de Categorías
-// Requiere: CuoreUI (NuGet: CuoreUI.Winforms). Nombres de propiedades basados en CuoreUI 2025.x;
-// si tu versión difiere, ajusta Rounding / NormalBackground / PanelColor en el diseñador.
-namespace ControlFinanzas
+﻿namespace ControlFinanzas.UI.Formularios
 {
     partial class FrmCategorias
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null)) components.Dispose();
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
             base.Dispose(disposing);
         }
 
-        #region Paleta
-        private static readonly System.Drawing.Color CFondo     = System.Drawing.ColorTranslator.FromHtml("#F8FAFC");
-        private static readonly System.Drawing.Color CTarjeta   = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
-        private static readonly System.Drawing.Color CBorde     = System.Drawing.ColorTranslator.FromHtml("#E2E8F0");
-        private static readonly System.Drawing.Color CTexto     = System.Drawing.ColorTranslator.FromHtml("#0F172A");
-        private static readonly System.Drawing.Color CLabel     = System.Drawing.ColorTranslator.FromHtml("#64748B");
-        private static readonly System.Drawing.Color CPrimario  = System.Drawing.ColorTranslator.FromHtml("#2563EB");
-        private static readonly System.Drawing.Color CPrimHover = System.Drawing.ColorTranslator.FromHtml("#1D4ED8");
-        private static readonly System.Drawing.Color CIngreso   = System.Drawing.ColorTranslator.FromHtml("#10B981");
-        private static readonly System.Drawing.Color CGasto     = System.Drawing.ColorTranslator.FromHtml("#EF4444");
-        #endregion
+        #region Windows Form Designer generated code
 
-        #region Código generado por el Diseñador
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            lblTitulo = new Label();
-            lblSubtitulo = new Label();
-            pnlKpiTotal = new CuoreUI.Controls.cuiPanel();
-            pnlKpiIngresos = new CuoreUI.Controls.cuiPanel();
-            pnlKpiGastos = new CuoreUI.Controls.cuiPanel();
-            lblKpiTotalTit = new Label();
-            lblKpiTotal = new Label();
-            lblKpiIngTit = new Label();
-            lblKpiIngresos = new Label();
-            lblKpiGasTit = new Label();
-            lblKpiGastos = new Label();
-            pnlLista = new CuoreUI.Controls.cuiPanel();
-            txtBuscar = new CuoreUI.Controls.cuiTextBox();
-            cmbFiltroTipo = new ComboBox();
-            dgvCategorias = new DataGridView();
-            colId = new DataGridViewTextBoxColumn();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCategorias));
+            label2 = new Label();
+            label1 = new Label();
+            pnlCardCredito = new CuoreUI.Controls.cuiPanel();
+            lblTotalCategoriasGasto = new Label();
+            lbTitulolTotalCategoriasGasto = new Label();
+            pnlCardDeuda = new CuoreUI.Controls.cuiPanel();
+            lblTotalCategoriasIngreso = new Label();
+            lblTituloTotalCategoriasIngreso = new Label();
+            pnlCardLiquidez = new CuoreUI.Controls.cuiPanel();
+            lblTotalCategoria = new Label();
+            lblTituloTotalCategoria = new Label();
+            cuiPanel4 = new CuoreUI.Controls.cuiPanel();
+            btnActivarDesactivar = new CuoreUI.Controls.cuiButton();
+            btnEditarCategoria = new CuoreUI.Controls.cuiButton();
+            dgvCuentas = new DataGridView();
             colColor = new DataGridViewTextBoxColumn();
             colNombre = new DataGridViewTextBoxColumn();
             colTipo = new DataGridViewTextBoxColumn();
-            colHex = new DataGridViewTextBoxColumn();
             colEstado = new DataGridViewTextBoxColumn();
-            pnlForm = new CuoreUI.Controls.cuiPanel();
-            lblFormTitulo = new Label();
-            lblNombre = new Label();
-            txtNombre = new CuoreUI.Controls.cuiTextBox();
-            lblTipo = new Label();
-            cmbTipo = new ComboBox();
-            lblColor = new Label();
+            ComboboxBuscarCategoriaPorTipo = new CuoreUI.Controls.cuiComboBox();
+            txtBuscarCategoriaPorNombre = new CuoreUI.Controls.cuiTextBox();
+            cuiPanel5 = new CuoreUI.Controls.cuiPanel();
+            textBox1 = new TextBox();
             pnlColorPreview = new CuoreUI.Controls.cuiPanel();
-            txtColor = new CuoreUI.Controls.cuiTextBox();
-            btnElegirColor = new CuoreUI.Controls.cuiButton();
-            lblEstado = new Label();
-            chkEstado = new CuoreUI.Controls.cuiSwitch();
-            lblEstadoTexto = new Label();
-            btnGuardar = new CuoreUI.Controls.cuiButton();
-            btnNuevo = new CuoreUI.Controls.cuiButton();
-            colorDialog = new ColorDialog();
-            pnlLista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).BeginInit();
-            pnlForm.SuspendLayout();
+            btnSeleccinarColor = new CuoreUI.Controls.cuiButton();
+            label5 = new Label();
+            btnCancelar = new CuoreUI.Controls.cuiButton();
+            btnGuardarCategoria = new CuoreUI.Controls.cuiButton();
+            cuiCheckbox1 = new CuoreUI.Controls.cuiCheckbox();
+            cmbTipoCategoria = new CuoreUI.Controls.cuiComboBox();
+            label6 = new Label();
+            label4 = new Label();
+            cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
+            label3 = new Label();
+            pnlCardCredito.SuspendLayout();
+            pnlCardDeuda.SuspendLayout();
+            pnlCardLiquidez.SuspendLayout();
+            cuiPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCuentas).BeginInit();
+            cuiPanel5.SuspendLayout();
             SuspendLayout();
             // 
-            // lblTitulo
+            // label2
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI Semibold", 16F);
-            lblTitulo.Location = new Point(24, 18);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(231, 30);
-            lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Gestión de Categorías";
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.DimGray;
+            label2.Location = new Point(18, 52);
+            label2.Name = "label2";
+            label2.Size = new Size(279, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Organiza tus rubros de ingresos y gastos.";
             // 
-            // lblSubtitulo
+            // label1
             // 
-            lblSubtitulo.AutoSize = true;
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
-            lblSubtitulo.Location = new Point(26, 52);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(239, 15);
-            lblSubtitulo.TabIndex = 1;
-            lblSubtitulo.Text = "Organiza tus ingresos y gastos por categoría";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(18, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(227, 30);
+            label1.TabIndex = 2;
+            label1.Text = "Gestion de Categorias";
             // 
-            // pnlKpiTotal
+            // pnlCardCredito
             // 
-            pnlKpiTotal.Location = new Point(0, 0);
-            pnlKpiTotal.Name = "pnlKpiTotal";
-            pnlKpiTotal.OutlineThickness = 1F;
-            pnlKpiTotal.PanelColor = Color.White;
-            pnlKpiTotal.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
-            pnlKpiTotal.Rounding = new Padding(8);
-            pnlKpiTotal.Size = new Size(346, 150);
-            pnlKpiTotal.TabIndex = 2;
+            pnlCardCredito.BackColor = Color.Transparent;
+            pnlCardCredito.Controls.Add(lblTotalCategoriasGasto);
+            pnlCardCredito.Controls.Add(lbTitulolTotalCategoriasGasto);
+            pnlCardCredito.Location = new Point(776, 92);
+            pnlCardCredito.Name = "pnlCardCredito";
+            pnlCardCredito.OutlineThickness = 1F;
+            pnlCardCredito.PanelColor = Color.White;
+            pnlCardCredito.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            pnlCardCredito.Rounding = new Padding(15);
+            pnlCardCredito.Size = new Size(358, 90);
+            pnlCardCredito.TabIndex = 6;
             // 
-            // pnlKpiIngresos
+            // lblTotalCategoriasGasto
             // 
-            pnlKpiIngresos.Location = new Point(0, 0);
-            pnlKpiIngresos.Name = "pnlKpiIngresos";
-            pnlKpiIngresos.OutlineThickness = 1F;
-            pnlKpiIngresos.PanelColor = Color.White;
-            pnlKpiIngresos.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
-            pnlKpiIngresos.Rounding = new Padding(8);
-            pnlKpiIngresos.Size = new Size(346, 150);
-            pnlKpiIngresos.TabIndex = 3;
+            lblTotalCategoriasGasto.AutoSize = true;
+            lblTotalCategoriasGasto.BackColor = Color.Transparent;
+            lblTotalCategoriasGasto.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
+            lblTotalCategoriasGasto.ForeColor = Color.Red;
+            lblTotalCategoriasGasto.Location = new Point(48, 42);
+            lblTotalCategoriasGasto.Name = "lblTotalCategoriasGasto";
+            lblTotalCategoriasGasto.Size = new Size(36, 37);
+            lblTotalCategoriasGasto.TabIndex = 6;
+            lblTotalCategoriasGasto.Text = "0";
             // 
-            // pnlKpiGastos
+            // lbTitulolTotalCategoriasGasto
             // 
-            pnlKpiGastos.Location = new Point(0, 0);
-            pnlKpiGastos.Name = "pnlKpiGastos";
-            pnlKpiGastos.OutlineThickness = 1F;
-            pnlKpiGastos.PanelColor = Color.White;
-            pnlKpiGastos.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
-            pnlKpiGastos.Rounding = new Padding(8);
-            pnlKpiGastos.Size = new Size(346, 150);
-            pnlKpiGastos.TabIndex = 4;
+            lbTitulolTotalCategoriasGasto.AutoSize = true;
+            lbTitulolTotalCategoriasGasto.BackColor = Color.Transparent;
+            lbTitulolTotalCategoriasGasto.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Bold);
+            lbTitulolTotalCategoriasGasto.ForeColor = SystemColors.ActiveCaptionText;
+            lbTitulolTotalCategoriasGasto.Location = new Point(20, 9);
+            lbTitulolTotalCategoriasGasto.Name = "lbTitulolTotalCategoriasGasto";
+            lbTitulolTotalCategoriasGasto.Size = new Size(147, 19);
+            lbTitulolTotalCategoriasGasto.TabIndex = 6;
+            lbTitulolTotalCategoriasGasto.Text = "Total Categorías Gasto";
             // 
-            // lblKpiTotalTit
+            // pnlCardDeuda
             // 
-            lblKpiTotalTit.Location = new Point(0, 0);
-            lblKpiTotalTit.Name = "lblKpiTotalTit";
-            lblKpiTotalTit.Size = new Size(100, 23);
-            lblKpiTotalTit.TabIndex = 0;
+            pnlCardDeuda.BackColor = Color.Transparent;
+            pnlCardDeuda.Controls.Add(lblTotalCategoriasIngreso);
+            pnlCardDeuda.Controls.Add(lblTituloTotalCategoriasIngreso);
+            pnlCardDeuda.Location = new Point(400, 92);
+            pnlCardDeuda.Name = "pnlCardDeuda";
+            pnlCardDeuda.OutlineThickness = 1F;
+            pnlCardDeuda.PanelColor = Color.White;
+            pnlCardDeuda.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            pnlCardDeuda.Rounding = new Padding(15);
+            pnlCardDeuda.Size = new Size(358, 90);
+            pnlCardDeuda.TabIndex = 5;
             // 
-            // lblKpiTotal
+            // lblTotalCategoriasIngreso
             // 
-            lblKpiTotal.Location = new Point(0, 0);
-            lblKpiTotal.Name = "lblKpiTotal";
-            lblKpiTotal.Size = new Size(100, 23);
-            lblKpiTotal.TabIndex = 0;
+            lblTotalCategoriasIngreso.AutoSize = true;
+            lblTotalCategoriasIngreso.BackColor = Color.Transparent;
+            lblTotalCategoriasIngreso.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
+            lblTotalCategoriasIngreso.ForeColor = Color.Green;
+            lblTotalCategoriasIngreso.Location = new Point(54, 42);
+            lblTotalCategoriasIngreso.Name = "lblTotalCategoriasIngreso";
+            lblTotalCategoriasIngreso.Size = new Size(36, 37);
+            lblTotalCategoriasIngreso.TabIndex = 5;
+            lblTotalCategoriasIngreso.Text = "0";
             // 
-            // lblKpiIngTit
+            // lblTituloTotalCategoriasIngreso
             // 
-            lblKpiIngTit.Location = new Point(0, 0);
-            lblKpiIngTit.Name = "lblKpiIngTit";
-            lblKpiIngTit.Size = new Size(100, 23);
-            lblKpiIngTit.TabIndex = 0;
+            lblTituloTotalCategoriasIngreso.AutoSize = true;
+            lblTituloTotalCategoriasIngreso.BackColor = Color.Transparent;
+            lblTituloTotalCategoriasIngreso.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Bold);
+            lblTituloTotalCategoriasIngreso.ForeColor = SystemColors.ActiveCaptionText;
+            lblTituloTotalCategoriasIngreso.Location = new Point(20, 9);
+            lblTituloTotalCategoriasIngreso.Name = "lblTituloTotalCategoriasIngreso";
+            lblTituloTotalCategoriasIngreso.Size = new Size(137, 19);
+            lblTituloTotalCategoriasIngreso.TabIndex = 2;
+            lblTituloTotalCategoriasIngreso.Text = "Total Categorías Ingreso";
             // 
-            // lblKpiIngresos
+            // pnlCardLiquidez
             // 
-            lblKpiIngresos.Location = new Point(0, 0);
-            lblKpiIngresos.Name = "lblKpiIngresos";
-            lblKpiIngresos.Size = new Size(100, 23);
-            lblKpiIngresos.TabIndex = 0;
+            pnlCardLiquidez.BackColor = Color.Transparent;
+            pnlCardLiquidez.Controls.Add(lblTotalCategoria);
+            pnlCardLiquidez.Controls.Add(lblTituloTotalCategoria);
+            pnlCardLiquidez.Location = new Point(20, 92);
+            pnlCardLiquidez.Name = "pnlCardLiquidez";
+            pnlCardLiquidez.OutlineThickness = 1F;
+            pnlCardLiquidez.PanelColor = Color.White;
+            pnlCardLiquidez.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            pnlCardLiquidez.Rounding = new Padding(15);
+            pnlCardLiquidez.Size = new Size(358, 90);
+            pnlCardLiquidez.TabIndex = 4;
             // 
-            // lblKpiGasTit
+            // lblTotalCategoria
             // 
-            lblKpiGasTit.Location = new Point(0, 0);
-            lblKpiGasTit.Name = "lblKpiGasTit";
-            lblKpiGasTit.Size = new Size(100, 23);
-            lblKpiGasTit.TabIndex = 0;
+            lblTotalCategoria.AutoSize = true;
+            lblTotalCategoria.BackColor = Color.Transparent;
+            lblTotalCategoria.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
+            lblTotalCategoria.ForeColor = Color.FromArgb(0, 0, 192);
+            lblTotalCategoria.Location = new Point(50, 42);
+            lblTotalCategoria.Name = "lblTotalCategoria";
+            lblTotalCategoria.Size = new Size(36, 37);
+            lblTotalCategoria.TabIndex = 1;
+            lblTotalCategoria.Text = "0";
             // 
-            // lblKpiGastos
+            // lblTituloTotalCategoria
             // 
-            lblKpiGastos.Location = new Point(0, 0);
-            lblKpiGastos.Name = "lblKpiGastos";
-            lblKpiGastos.Size = new Size(100, 23);
-            lblKpiGastos.TabIndex = 0;
+            lblTituloTotalCategoria.AutoSize = true;
+            lblTituloTotalCategoria.BackColor = Color.Transparent;
+            lblTituloTotalCategoria.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Bold);
+            lblTituloTotalCategoria.ForeColor = SystemColors.ActiveCaptionText;
+            lblTituloTotalCategoria.Location = new Point(20, 9);
+            lblTituloTotalCategoria.Name = "lblTituloTotalCategoria";
+            lblTituloTotalCategoria.Size = new Size(111, 19);
+            lblTituloTotalCategoria.TabIndex = 0;
+            lblTituloTotalCategoria.Text = "Total Categorías";
             // 
-            // pnlLista
+            // cuiPanel4
             // 
-            pnlLista.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlLista.Controls.Add(txtBuscar);
-            pnlLista.Controls.Add(cmbFiltroTipo);
-            pnlLista.Controls.Add(dgvCategorias);
-            pnlLista.Location = new Point(24, 196);
-            pnlLista.Name = "pnlLista";
-            pnlLista.OutlineThickness = 1F;
-            pnlLista.PanelColor = Color.White;
-            pnlLista.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
-            pnlLista.Rounding = new Padding(12);
-            pnlLista.Size = new Size(860, 500);
-            pnlLista.TabIndex = 5;
+            cuiPanel4.Controls.Add(btnActivarDesactivar);
+            cuiPanel4.Controls.Add(btnEditarCategoria);
+            cuiPanel4.Controls.Add(dgvCuentas);
+            cuiPanel4.Controls.Add(ComboboxBuscarCategoriaPorTipo);
+            cuiPanel4.Controls.Add(txtBuscarCategoriaPorNombre);
+            cuiPanel4.Location = new Point(20, 206);
+            cuiPanel4.Name = "cuiPanel4";
+            cuiPanel4.OutlineThickness = 1F;
+            cuiPanel4.PanelColor = Color.White;
+            cuiPanel4.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            cuiPanel4.Rounding = new Padding(15);
+            cuiPanel4.Size = new Size(698, 486);
+            cuiPanel4.TabIndex = 7;
             // 
-            // txtBuscar
+            // btnActivarDesactivar
             // 
-            txtBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtBuscar.BackgroundColor = Color.White;
-            txtBuscar.Content = "";
-            txtBuscar.FocusBackgroundColor = Color.White;
-            txtBuscar.FocusImageTint = Color.White;
-            txtBuscar.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtBuscar.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBuscar.ForeColor = Color.Gray;
-            txtBuscar.Image = null;
-            txtBuscar.ImageExpand = new Point(0, 0);
-            txtBuscar.ImageOffset = new Point(0, 0);
-            txtBuscar.Location = new Point(0, 0);
-            txtBuscar.Margin = new Padding(4);
-            txtBuscar.Multiline = false;
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.NormalImageTint = Color.White;
-            txtBuscar.OutlineColor = Color.FromArgb(128, 128, 128, 128);
-            txtBuscar.Padding = new Padding(16, 14, 16, 0);
-            txtBuscar.PasswordChar = false;
-            txtBuscar.PlaceholderColor = Color.LightGray;
-            txtBuscar.PlaceholderText = "Placeholder text..";
-            txtBuscar.Rounding = new Padding(8);
-            txtBuscar.Size = new Size(266, 45);
-            txtBuscar.TabIndex = 0;
-            txtBuscar.TextOffset = new Size(0, 0);
-            txtBuscar.UnderlinedStyle = true;
+            btnActivarDesactivar.CheckButton = false;
+            btnActivarDesactivar.Checked = false;
+            btnActivarDesactivar.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnActivarDesactivar.CheckedForeColor = Color.White;
+            btnActivarDesactivar.CheckedImageTint = Color.White;
+            btnActivarDesactivar.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnActivarDesactivar.Content = "Desactivar/Activar";
+            btnActivarDesactivar.DialogResult = DialogResult.None;
+            btnActivarDesactivar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnActivarDesactivar.ForeColor = Color.Gray;
+            btnActivarDesactivar.HoverBackground = Color.White;
+            btnActivarDesactivar.HoverForeColor = Color.DimGray;
+            btnActivarDesactivar.HoverImageTint = Color.DimGray;
+            btnActivarDesactivar.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnActivarDesactivar.Image = null;
+            btnActivarDesactivar.ImageExpand = new Point(0, 0);
+            btnActivarDesactivar.Location = new Point(128, 404);
+            btnActivarDesactivar.Name = "btnActivarDesactivar";
+            btnActivarDesactivar.NormalBackground = Color.White;
+            btnActivarDesactivar.NormalForeColor = Color.Gray;
+            btnActivarDesactivar.NormalImageTint = Color.Black;
+            btnActivarDesactivar.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnActivarDesactivar.OutlineThickness = 1F;
+            btnActivarDesactivar.Padding = new Padding(12);
+            btnActivarDesactivar.PressedBackground = Color.WhiteSmoke;
+            btnActivarDesactivar.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnActivarDesactivar.PressedImageTint = Color.FromArgb(32, 32, 32);
+            btnActivarDesactivar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnActivarDesactivar.Rounding = new Padding(8);
+            btnActivarDesactivar.Size = new Size(160, 32);
+            btnActivarDesactivar.TabIndex = 4;
+            btnActivarDesactivar.TextAlignment = StringAlignment.Center;
+            btnActivarDesactivar.TextPadding = 12;
+            btnActivarDesactivar.TextSpacing = 2;
+            btnActivarDesactivar.Click += btnActivarDesactivar_Click;
             // 
-            // cmbFiltroTipo
+            // btnEditarCategoria
             // 
-            cmbFiltroTipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            cmbFiltroTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbFiltroTipo.FlatStyle = FlatStyle.Flat;
-            cmbFiltroTipo.Font = new Font("Segoe UI", 10F);
-            cmbFiltroTipo.Items.AddRange(new object[] { "Todos", "Ingreso", "Gasto" });
-            cmbFiltroTipo.Location = new Point(636, 26);
-            cmbFiltroTipo.Name = "cmbFiltroTipo";
-            cmbFiltroTipo.Size = new Size(204, 25);
-            cmbFiltroTipo.TabIndex = 1;
+            btnEditarCategoria.CheckButton = false;
+            btnEditarCategoria.Checked = false;
+            btnEditarCategoria.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnEditarCategoria.CheckedForeColor = Color.White;
+            btnEditarCategoria.CheckedImageTint = Color.White;
+            btnEditarCategoria.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnEditarCategoria.Content = "Editar";
+            btnEditarCategoria.DialogResult = DialogResult.None;
+            btnEditarCategoria.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnEditarCategoria.ForeColor = Color.Gray;
+            btnEditarCategoria.HoverBackground = Color.White;
+            btnEditarCategoria.HoverForeColor = Color.DimGray;
+            btnEditarCategoria.HoverImageTint = Color.DimGray;
+            btnEditarCategoria.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnEditarCategoria.Image = null;
+            btnEditarCategoria.ImageExpand = new Point(0, 0);
+            btnEditarCategoria.Location = new Point(12, 404);
+            btnEditarCategoria.Name = "btnEditarCategoria";
+            btnEditarCategoria.NormalBackground = Color.White;
+            btnEditarCategoria.NormalForeColor = Color.Gray;
+            btnEditarCategoria.NormalImageTint = Color.Black;
+            btnEditarCategoria.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnEditarCategoria.OutlineThickness = 1F;
+            btnEditarCategoria.Padding = new Padding(12);
+            btnEditarCategoria.PressedBackground = Color.WhiteSmoke;
+            btnEditarCategoria.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnEditarCategoria.PressedImageTint = Color.FromArgb(32, 32, 32);
+            btnEditarCategoria.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnEditarCategoria.Rounding = new Padding(8);
+            btnEditarCategoria.Size = new Size(110, 32);
+            btnEditarCategoria.TabIndex = 3;
+            btnEditarCategoria.TextAlignment = StringAlignment.Center;
+            btnEditarCategoria.TextPadding = 12;
+            btnEditarCategoria.TextSpacing = 2;
+            btnEditarCategoria.Click += btnEditarCategoria_Click;
             // 
-            // dgvCategorias
+            // dgvCuentas
             // 
-            dgvCategorias.AllowUserToAddRows = false;
-            dgvCategorias.AllowUserToDeleteRows = false;
-            dgvCategorias.AllowUserToResizeRows = false;
-            dgvCategorias.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCategorias.BorderStyle = BorderStyle.None;
-            dgvCategorias.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvCategorias.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(8, 0, 0, 0);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvCategorias.ColumnHeadersHeight = 42;
-            dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvCategorias.Columns.AddRange(new DataGridViewColumn[] { colId, colColor, colNombre, colTipo, colHex, colEstado });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new Padding(8, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(239, 246, 255);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvCategorias.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvCategorias.EnableHeadersVisualStyles = false;
-            dgvCategorias.Location = new Point(20, 76);
-            dgvCategorias.MultiSelect = false;
-            dgvCategorias.Name = "dgvCategorias";
-            dgvCategorias.ReadOnly = true;
-            dgvCategorias.RowHeadersVisible = false;
-            dgvCategorias.RowTemplate.Height = 44;
-            dgvCategorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategorias.Size = new Size(820, 404);
-            dgvCategorias.TabIndex = 2;
-            // 
-            // colId
-            // 
-            colId.DataPropertyName = "IdCategoria";
-            colId.Name = "colId";
-            colId.ReadOnly = true;
-            colId.Visible = false;
+            dgvCuentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCuentas.Columns.AddRange(new DataGridViewColumn[] { colColor, colNombre, colTipo, colEstado });
+            dgvCuentas.Location = new Point(12, 118);
+            dgvCuentas.Name = "dgvCuentas";
+            dgvCuentas.Size = new Size(676, 270);
+            dgvCuentas.TabIndex = 2;
             // 
             // colColor
             // 
-            colColor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            colColor.DataPropertyName = "ColorHex";
-            colColor.HeaderText = "";
+            colColor.HeaderText = "Color";
             colColor.Name = "colColor";
-            colColor.ReadOnly = true;
-            colColor.Width = 48;
+            colColor.Width = 65;
+            colColor.Resizable = DataGridViewTriState.False;
             // 
             // colNombre
             // 
-            colNombre.DataPropertyName = "Nombre";
-            colNombre.FillWeight = 40F;
-            colNombre.HeaderText = "NOMBRE";
+            colNombre.HeaderText = "Nombre";
             colNombre.Name = "colNombre";
-            colNombre.ReadOnly = true;
             // 
             // colTipo
             // 
-            colTipo.DataPropertyName = "Tipo";
-            colTipo.FillWeight = 20F;
-            colTipo.HeaderText = "TIPO";
+            colTipo.HeaderText = "Tipo";
             colTipo.Name = "colTipo";
-            colTipo.ReadOnly = true;
-            // 
-            // colHex
-            // 
-            colHex.DataPropertyName = "ColorHex";
-            colHex.FillWeight = 20F;
-            colHex.HeaderText = "COLOR";
-            colHex.Name = "colHex";
-            colHex.ReadOnly = true;
+            colTipo.Width = 110;
             // 
             // colEstado
             // 
-            colEstado.DataPropertyName = "Estado";
-            colEstado.FillWeight = 20F;
-            colEstado.HeaderText = "ESTADO";
+            colEstado.HeaderText = "Estado";
             colEstado.Name = "colEstado";
-            colEstado.ReadOnly = true;
+            colEstado.Width = 110;
             // 
-            // pnlForm
+            // ComboboxBuscarCategoriaPorTipo
             // 
-            pnlForm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            pnlForm.Controls.Add(lblFormTitulo);
-            pnlForm.Controls.Add(lblNombre);
-            pnlForm.Controls.Add(txtNombre);
-            pnlForm.Controls.Add(lblTipo);
-            pnlForm.Controls.Add(cmbTipo);
-            pnlForm.Controls.Add(lblColor);
-            pnlForm.Controls.Add(pnlColorPreview);
-            pnlForm.Controls.Add(txtColor);
-            pnlForm.Controls.Add(btnElegirColor);
-            pnlForm.Controls.Add(lblEstado);
-            pnlForm.Controls.Add(chkEstado);
-            pnlForm.Controls.Add(lblEstadoTexto);
-            pnlForm.Controls.Add(btnGuardar);
-            pnlForm.Controls.Add(btnNuevo);
-            pnlForm.Location = new Point(904, 196);
-            pnlForm.Name = "pnlForm";
-            pnlForm.OutlineThickness = 1F;
-            pnlForm.PanelColor = Color.White;
-            pnlForm.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
-            pnlForm.Rounding = new Padding(12);
-            pnlForm.Size = new Size(352, 500);
-            pnlForm.TabIndex = 6;
+            ComboboxBuscarCategoriaPorTipo.BackColor = Color.Transparent;
+            ComboboxBuscarCategoriaPorTipo.BackgroundColor = Color.FromArgb(255, 255, 255);
+            ComboboxBuscarCategoriaPorTipo.DropDownBackgroundColor = Color.White;
+            ComboboxBuscarCategoriaPorTipo.DropDownForeColor = Color.FromArgb(27, 27, 27);
+            ComboboxBuscarCategoriaPorTipo.ExpandArrowColor = Color.DimGray;
+            ComboboxBuscarCategoriaPorTipo.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ComboboxBuscarCategoriaPorTipo.ForeColor = Color.Gray;
+            ComboboxBuscarCategoriaPorTipo.Items = new string[]
+            {
+                "Todas",
+                "Ingreso",
+                "Gasto"
+            };
+            ComboboxBuscarCategoriaPorTipo.Location = new Point(12, 61);
+            ComboboxBuscarCategoriaPorTipo.Margin = new Padding(5, 4, 5, 4);
+            ComboboxBuscarCategoriaPorTipo.MaxDropDownHeight = 240;
+            ComboboxBuscarCategoriaPorTipo.Name = "ComboboxBuscarCategoriaPorTipo";
+            ComboboxBuscarCategoriaPorTipo.NoSelectionText = "None";
+            ComboboxBuscarCategoriaPorTipo.OutlineColor = Color.FromArgb(64, 128, 128, 128);
+            ComboboxBuscarCategoriaPorTipo.OutlineThickness = 1F;
+            ComboboxBuscarCategoriaPorTipo.Rounding = 8;
+            ComboboxBuscarCategoriaPorTipo.SelectedIndex = 0;
+            ComboboxBuscarCategoriaPorTipo.SelectedItem = "Todas";
+            ComboboxBuscarCategoriaPorTipo.Size = new Size(676, 36);
+            ComboboxBuscarCategoriaPorTipo.SortAlphabetically = false;
+            ComboboxBuscarCategoriaPorTipo.TabIndex = 1;
+            ComboboxBuscarCategoriaPorTipo.SelectedIndexChanged += ComboboxBuscarCategoriaPorTipo_SelectedIndexChanged;
             // 
-            // lblFormTitulo
+            // txtBuscarCategoriaPorNombre
             // 
-            lblFormTitulo.AutoSize = true;
-            lblFormTitulo.Font = new Font("Segoe UI Semibold", 12F);
-            lblFormTitulo.Location = new Point(24, 22);
-            lblFormTitulo.Name = "lblFormTitulo";
-            lblFormTitulo.Size = new Size(129, 21);
-            lblFormTitulo.TabIndex = 0;
-            lblFormTitulo.Text = "Nueva categoría";
+            txtBuscarCategoriaPorNombre.BackColor = Color.Transparent;
+            txtBuscarCategoriaPorNombre.BackgroundColor = Color.White;
+            txtBuscarCategoriaPorNombre.Content = "";
+            txtBuscarCategoriaPorNombre.FocusBackgroundColor = Color.White;
+            txtBuscarCategoriaPorNombre.FocusImageTint = Color.White;
+            txtBuscarCategoriaPorNombre.FocusOutlineColor = SystemColors.MenuHighlight;
+            txtBuscarCategoriaPorNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscarCategoriaPorNombre.ForeColor = Color.DimGray;
+            txtBuscarCategoriaPorNombre.Image = null;
+            txtBuscarCategoriaPorNombre.ImageExpand = new Point(0, 0);
+            txtBuscarCategoriaPorNombre.ImageOffset = new Point(0, 0);
+            txtBuscarCategoriaPorNombre.Location = new Point(12, 17);
+            txtBuscarCategoriaPorNombre.Margin = new Padding(4);
+            txtBuscarCategoriaPorNombre.Multiline = false;
+            txtBuscarCategoriaPorNombre.Name = "txtBuscarCategoriaPorNombre";
+            txtBuscarCategoriaPorNombre.NormalImageTint = Color.White;
+            txtBuscarCategoriaPorNombre.OutlineColor = Color.DarkGray;
+            txtBuscarCategoriaPorNombre.Padding = new Padding(20, 8, 20, 0);
+            txtBuscarCategoriaPorNombre.PasswordChar = false;
+            txtBuscarCategoriaPorNombre.PlaceholderColor = Color.Silver;
+            txtBuscarCategoriaPorNombre.PlaceholderText = "Buscar categoría por nombre...";
+            txtBuscarCategoriaPorNombre.Rounding = new Padding(15);
+            txtBuscarCategoriaPorNombre.Size = new Size(676, 36);
+            txtBuscarCategoriaPorNombre.TabIndex = 0;
+            txtBuscarCategoriaPorNombre.TextOffset = new Size(0, 0);
+            txtBuscarCategoriaPorNombre.UnderlinedStyle = true;
+            txtBuscarCategoriaPorNombre.ContentChanged += txtBuscarCategoriaPorNombre_ContentChanged;
             // 
-            // lblNombre
+            // cuiPanel5
             // 
-            lblNombre.Location = new Point(0, 0);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(100, 23);
-            lblNombre.TabIndex = 1;
+            cuiPanel5.Controls.Add(textBox1);
+            cuiPanel5.Controls.Add(pnlColorPreview);
+            cuiPanel5.Controls.Add(btnSeleccinarColor);
+            cuiPanel5.Controls.Add(label5);
+            cuiPanel5.Controls.Add(btnCancelar);
+            cuiPanel5.Controls.Add(btnGuardarCategoria);
+            cuiPanel5.Controls.Add(cuiCheckbox1);
+            cuiPanel5.Controls.Add(cmbTipoCategoria);
+            cuiPanel5.Controls.Add(label6);
+            cuiPanel5.Controls.Add(label4);
+            cuiPanel5.Controls.Add(cuiTextBox2);
+            cuiPanel5.Controls.Add(label3);
+            cuiPanel5.Location = new Point(738, 206);
+            cuiPanel5.Name = "cuiPanel5";
+            cuiPanel5.OutlineThickness = 1F;
+            cuiPanel5.PanelColor = Color.White;
+            cuiPanel5.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
+            cuiPanel5.Rounding = new Padding(15);
+            cuiPanel5.Size = new Size(396, 486);
+            cuiPanel5.TabIndex = 8;
             // 
-            // txtNombre
+            // textBox1
             // 
-            txtNombre.BackgroundColor = Color.White;
-            txtNombre.Content = "";
-            txtNombre.FocusBackgroundColor = Color.White;
-            txtNombre.FocusImageTint = Color.White;
-            txtNombre.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtNombre.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.ForeColor = Color.Gray;
-            txtNombre.Image = null;
-            txtNombre.ImageExpand = new Point(0, 0);
-            txtNombre.ImageOffset = new Point(0, 0);
-            txtNombre.Location = new Point(0, 0);
-            txtNombre.Margin = new Padding(4);
-            txtNombre.Multiline = false;
-            txtNombre.Name = "txtNombre";
-            txtNombre.NormalImageTint = Color.White;
-            txtNombre.OutlineColor = Color.FromArgb(128, 128, 128, 128);
-            txtNombre.Padding = new Padding(16, 14, 16, 0);
-            txtNombre.PasswordChar = false;
-            txtNombre.PlaceholderColor = Color.LightGray;
-            txtNombre.PlaceholderText = "Placeholder text..";
-            txtNombre.Rounding = new Padding(8);
-            txtNombre.Size = new Size(266, 45);
-            txtNombre.TabIndex = 2;
-            txtNombre.TextOffset = new Size(0, 0);
-            txtNombre.UnderlinedStyle = true;
-            // 
-            // lblTipo
-            // 
-            lblTipo.Location = new Point(0, 0);
-            lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(100, 23);
-            lblTipo.TabIndex = 3;
-            // 
-            // cmbTipo
-            // 
-            cmbTipo.DrawMode = DrawMode.OwnerDrawFixed;
-            cmbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipo.FlatStyle = FlatStyle.Flat;
-            cmbTipo.Font = new Font("Segoe UI", 10F);
-            cmbTipo.ItemHeight = 28;
-            cmbTipo.Items.AddRange(new object[] { "Ingreso", "Gasto" });
-            cmbTipo.Location = new Point(24, 168);
-            cmbTipo.Name = "cmbTipo";
-            cmbTipo.Size = new Size(304, 34);
-            cmbTipo.TabIndex = 4;
-            // 
-            // lblColor
-            // 
-            lblColor.Location = new Point(0, 0);
-            lblColor.Name = "lblColor";
-            lblColor.Size = new Size(100, 23);
-            lblColor.TabIndex = 5;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = Color.FromArgb(64, 64, 64);
+            textBox1.Location = new Point(283, 268);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 18);
+            textBox1.TabIndex = 17;
+            textBox1.Text = "#808080";
             // 
             // pnlColorPreview
             // 
-            pnlColorPreview.Cursor = Cursors.Hand;
-            pnlColorPreview.Location = new Point(24, 244);
+            pnlColorPreview.BackColor = Color.Transparent;
+            pnlColorPreview.Location = new Point(227, 257);
             pnlColorPreview.Name = "pnlColorPreview";
             pnlColorPreview.OutlineThickness = 1F;
-            pnlColorPreview.PanelColor = Color.FromArgb(128, 128, 128);
+            pnlColorPreview.PanelColor = Color.Gray;
             pnlColorPreview.PanelOutlineColor = Color.FromArgb(64, 128, 128, 128);
             pnlColorPreview.Rounding = new Padding(8);
-            pnlColorPreview.Size = new Size(40, 40);
-            pnlColorPreview.TabIndex = 6;
+            pnlColorPreview.Size = new Size(50, 40);
+            pnlColorPreview.TabIndex = 16;
             // 
-            // txtColor
+            // btnSeleccinarColor
             // 
-            txtColor.BackgroundColor = Color.White;
-            txtColor.Content = "";
-            txtColor.FocusBackgroundColor = Color.White;
-            txtColor.FocusImageTint = Color.White;
-            txtColor.FocusOutlineColor = Color.FromArgb(255, 106, 0);
-            txtColor.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtColor.ForeColor = Color.Gray;
-            txtColor.Image = null;
-            txtColor.ImageExpand = new Point(0, 0);
-            txtColor.ImageOffset = new Point(0, 0);
-            txtColor.Location = new Point(0, 0);
-            txtColor.Margin = new Padding(4);
-            txtColor.Multiline = false;
-            txtColor.Name = "txtColor";
-            txtColor.NormalImageTint = Color.White;
-            txtColor.OutlineColor = Color.FromArgb(128, 128, 128, 128);
-            txtColor.Padding = new Padding(10, 7, 10, 7);
-            txtColor.PasswordChar = false;
-            txtColor.PlaceholderColor = Color.LightGray;
-            txtColor.PlaceholderText = "Placeholder text..";
-            txtColor.Rounding = new Padding(8);
-            txtColor.Size = new Size(266, 45);
-            txtColor.TabIndex = 7;
-            txtColor.TextOffset = new Size(0, 0);
-            txtColor.UnderlinedStyle = true;
+            btnSeleccinarColor.BackColor = Color.Transparent;
+            btnSeleccinarColor.CheckButton = false;
+            btnSeleccinarColor.Checked = false;
+            btnSeleccinarColor.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnSeleccinarColor.CheckedForeColor = Color.White;
+            btnSeleccinarColor.CheckedImageTint = Color.White;
+            btnSeleccinarColor.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnSeleccinarColor.Content = "Seleccionar Color";
+            btnSeleccinarColor.DialogResult = DialogResult.None;
+            btnSeleccinarColor.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnSeleccinarColor.ForeColor = Color.DimGray;
+            btnSeleccinarColor.HoverBackground = Color.Transparent;
+            btnSeleccinarColor.HoverForeColor = Color.DimGray;
+            btnSeleccinarColor.HoverImageTint = Color.IndianRed;
+            btnSeleccinarColor.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnSeleccinarColor.Image = (Image)resources.GetObject("btnSeleccinarColor.Image");
+            btnSeleccinarColor.ImageExpand = new Point(0, 0);
+            btnSeleccinarColor.Location = new Point(12, 260);
+            btnSeleccinarColor.Name = "btnSeleccinarColor";
+            btnSeleccinarColor.NormalBackground = Color.White;
+            btnSeleccinarColor.NormalForeColor = Color.DimGray;
+            btnSeleccinarColor.NormalImageTint = Color.White;
+            btnSeleccinarColor.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnSeleccinarColor.OutlineThickness = 1F;
+            btnSeleccinarColor.Padding = new Padding(12);
+            btnSeleccinarColor.PressedBackground = Color.WhiteSmoke;
+            btnSeleccinarColor.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnSeleccinarColor.PressedImageTint = Color.FromArgb(32, 32, 32);
+            btnSeleccinarColor.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnSeleccinarColor.Rounding = new Padding(8);
+            btnSeleccinarColor.Size = new Size(193, 39);
+            btnSeleccinarColor.TabIndex = 15;
+            btnSeleccinarColor.TextAlignment = StringAlignment.Center;
+            btnSeleccinarColor.TextPadding = 12;
+            btnSeleccinarColor.TextSpacing = 2;
+            btnSeleccinarColor.Click += btnSeleccinarColor_Click;
             // 
-            // btnElegirColor
+            // label5
             // 
-            btnElegirColor.CheckButton = false;
-            btnElegirColor.Checked = false;
-            btnElegirColor.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnElegirColor.CheckedForeColor = Color.White;
-            btnElegirColor.CheckedImageTint = Color.White;
-            btnElegirColor.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnElegirColor.Content = "Your text here!";
-            btnElegirColor.DialogResult = DialogResult.None;
-            btnElegirColor.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnElegirColor.ForeColor = Color.Black;
-            btnElegirColor.HoverBackground = Color.White;
-            btnElegirColor.HoverForeColor = Color.DimGray;
-            btnElegirColor.HoverImageTint = Color.DimGray;
-            btnElegirColor.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnElegirColor.Image = null;
-            btnElegirColor.ImageExpand = new Point(0, 0);
-            btnElegirColor.Location = new Point(0, 0);
-            btnElegirColor.Name = "btnElegirColor";
-            btnElegirColor.NormalBackground = Color.White;
-            btnElegirColor.NormalForeColor = Color.Black;
-            btnElegirColor.NormalImageTint = Color.Black;
-            btnElegirColor.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            btnElegirColor.OutlineThickness = 1F;
-            btnElegirColor.Padding = new Padding(12);
-            btnElegirColor.PressedBackground = Color.WhiteSmoke;
-            btnElegirColor.PressedForeColor = Color.FromArgb(32, 32, 32);
-            btnElegirColor.PressedImageTint = Color.FromArgb(32, 32, 32);
-            btnElegirColor.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnElegirColor.Rounding = new Padding(8);
-            btnElegirColor.Size = new Size(153, 45);
-            btnElegirColor.TabIndex = 8;
-            btnElegirColor.TextAlignment = StringAlignment.Center;
-            btnElegirColor.TextPadding = 12;
-            btnElegirColor.TextSpacing = 2;
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label5.ForeColor = Color.DimGray;
+            label5.Location = new Point(12, 218);
+            label5.Name = "label5";
+            label5.Size = new Size(41, 17);
+            label5.TabIndex = 14;
+            label5.Text = "Color";
             // 
-            // lblEstado
+            // btnCancelar
             // 
-            lblEstado.Location = new Point(0, 0);
-            lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(100, 23);
-            lblEstado.TabIndex = 9;
+            btnCancelar.CheckButton = false;
+            btnCancelar.Checked = false;
+            btnCancelar.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnCancelar.CheckedForeColor = Color.White;
+            btnCancelar.CheckedImageTint = Color.White;
+            btnCancelar.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnCancelar.Content = "Cancelar";
+            btnCancelar.DialogResult = DialogResult.None;
+            btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.HoverBackground = Color.Transparent;
+            btnCancelar.HoverForeColor = Color.DimGray;
+            btnCancelar.HoverImageTint = Color.DimGray;
+            btnCancelar.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnCancelar.Image = null;
+            btnCancelar.ImageExpand = new Point(0, 0);
+            btnCancelar.Location = new Point(199, 404);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.NormalBackground = Color.WhiteSmoke;
+            btnCancelar.NormalForeColor = Color.Black;
+            btnCancelar.NormalImageTint = Color.Black;
+            btnCancelar.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnCancelar.OutlineThickness = 1F;
+            btnCancelar.Padding = new Padding(12);
+            btnCancelar.PressedBackground = Color.WhiteSmoke;
+            btnCancelar.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnCancelar.PressedImageTint = Color.FromArgb(32, 32, 32);
+            btnCancelar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnCancelar.Rounding = new Padding(8);
+            btnCancelar.Size = new Size(182, 32);
+            btnCancelar.TabIndex = 13;
+            btnCancelar.TextAlignment = StringAlignment.Center;
+            btnCancelar.TextPadding = 12;
+            btnCancelar.TextSpacing = 2;
+            btnCancelar.Click += cuiButton4_Click;
             // 
-            // chkEstado
+            // btnGuardarCategoria
             // 
-            chkEstado.Checked = true;
-            chkEstado.CheckedBackground = Color.FromArgb(255, 106, 0);
-            chkEstado.CheckedForeground = Color.White;
-            chkEstado.CheckedOutlineColor = Color.Empty;
-            chkEstado.Location = new Point(24, 326);
-            chkEstado.MinimumSize = new Size(12, 8);
-            chkEstado.Name = "chkEstado";
-            chkEstado.OutlineThickness = 1F;
-            chkEstado.ShowSymbols = false;
-            chkEstado.Size = new Size(44, 24);
-            chkEstado.TabIndex = 10;
-            chkEstado.ThumbSizeModifier = new Size(0, 0);
-            chkEstado.UncheckedBackground = Color.FromArgb(64, 128, 128, 128);
-            chkEstado.UncheckedForeground = Color.White;
-            chkEstado.UncheckedOutlineColor = Color.Empty;
+            btnGuardarCategoria.CheckButton = false;
+            btnGuardarCategoria.Checked = false;
+            btnGuardarCategoria.CheckedBackground = Color.FromArgb(255, 106, 0);
+            btnGuardarCategoria.CheckedForeColor = Color.White;
+            btnGuardarCategoria.CheckedImageTint = Color.White;
+            btnGuardarCategoria.CheckedOutline = Color.FromArgb(255, 106, 0);
+            btnGuardarCategoria.Content = "Guardar";
+            btnGuardarCategoria.DialogResult = DialogResult.None;
+            btnGuardarCategoria.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnGuardarCategoria.ForeColor = Color.White;
+            btnGuardarCategoria.HoverBackground = Color.White;
+            btnGuardarCategoria.HoverForeColor = Color.DimGray;
+            btnGuardarCategoria.HoverImageTint = Color.DimGray;
+            btnGuardarCategoria.HoverOutline = Color.FromArgb(32, 128, 128, 128);
+            btnGuardarCategoria.Image = null;
+            btnGuardarCategoria.ImageExpand = new Point(0, 0);
+            btnGuardarCategoria.Location = new Point(12, 404);
+            btnGuardarCategoria.Name = "btnGuardarCategoria";
+            btnGuardarCategoria.NormalBackground = SystemColors.Highlight;
+            btnGuardarCategoria.NormalForeColor = Color.White;
+            btnGuardarCategoria.NormalImageTint = Color.Black;
+            btnGuardarCategoria.NormalOutline = Color.FromArgb(64, 128, 128, 128);
+            btnGuardarCategoria.OutlineThickness = 1F;
+            btnGuardarCategoria.Padding = new Padding(12);
+            btnGuardarCategoria.PressedBackground = Color.WhiteSmoke;
+            btnGuardarCategoria.PressedForeColor = Color.FromArgb(32, 32, 32);
+            btnGuardarCategoria.PressedImageTint = Color.FromArgb(32, 32, 32);
+            btnGuardarCategoria.PressedOutline = Color.FromArgb(64, 128, 128, 128);
+            btnGuardarCategoria.Rounding = new Padding(8);
+            btnGuardarCategoria.Size = new Size(181, 32);
+            btnGuardarCategoria.TabIndex = 12;
+            btnGuardarCategoria.TextAlignment = StringAlignment.Center;
+            btnGuardarCategoria.TextPadding = 12;
+            btnGuardarCategoria.TextSpacing = 2;
+            btnGuardarCategoria.Click += cuiButton3_Click;
             // 
-            // lblEstadoTexto
+            // cuiCheckbox1
             // 
-            lblEstadoTexto.AutoSize = true;
-            lblEstadoTexto.Font = new Font("Segoe UI", 10F);
-            lblEstadoTexto.Location = new Point(76, 328);
-            lblEstadoTexto.Name = "lblEstadoTexto";
-            lblEstadoTexto.Size = new Size(46, 19);
-            lblEstadoTexto.TabIndex = 11;
-            lblEstadoTexto.Text = "Activa";
+            cuiCheckbox1.BackColor = Color.White;
+            cuiCheckbox1.Checked = true;
+            cuiCheckbox1.CheckedForeground = Color.FromArgb(255, 106, 0);
+            cuiCheckbox1.CheckedOutlineColor = Color.FromArgb(255, 106, 0);
+            cuiCheckbox1.CheckedSymbolColor = Color.RoyalBlue;
+            cuiCheckbox1.Content = "Categoría Activa";
+            cuiCheckbox1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cuiCheckbox1.ForeColor = Color.Black;
+            cuiCheckbox1.Location = new Point(12, 346);
+            cuiCheckbox1.MinimumSize = new Size(16, 16);
+            cuiCheckbox1.Name = "cuiCheckbox1";
+            cuiCheckbox1.OutlineThickness = 1F;
+            cuiCheckbox1.Rounding = 4;
+            cuiCheckbox1.ShowSymbols = true;
+            cuiCheckbox1.Size = new Size(163, 24);
+            cuiCheckbox1.TabIndex = 9;
+            cuiCheckbox1.UncheckedForeground = Color.Empty;
+            cuiCheckbox1.UncheckedOutlineColor = Color.Gray;
+            cuiCheckbox1.UncheckedSymbolColor = Color.Empty;
             // 
-            // btnGuardar
+            // cmbTipoCategoria
             // 
-            btnGuardar.CheckButton = false;
-            btnGuardar.Checked = false;
-            btnGuardar.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnGuardar.CheckedForeColor = Color.White;
-            btnGuardar.CheckedImageTint = Color.White;
-            btnGuardar.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnGuardar.Content = "Guardar categoría";
-            btnGuardar.Cursor = Cursors.Hand;
-            btnGuardar.DialogResult = DialogResult.None;
-            btnGuardar.Font = new Font("Segoe UI Semibold", 10F);
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.HoverBackground = Color.White;
-            btnGuardar.HoverForeColor = Color.White;
-            btnGuardar.HoverImageTint = Color.DimGray;
-            btnGuardar.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnGuardar.Image = null;
-            btnGuardar.ImageExpand = new Point(0, 0);
-            btnGuardar.Location = new Point(24, 380);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.NormalBackground = Color.White;
-            btnGuardar.NormalForeColor = Color.White;
-            btnGuardar.NormalImageTint = Color.Black;
-            btnGuardar.NormalOutline = Color.Empty;
-            btnGuardar.OutlineThickness = 1F;
-            btnGuardar.Padding = new Padding(12);
-            btnGuardar.PressedBackground = Color.WhiteSmoke;
-            btnGuardar.PressedForeColor = Color.White;
-            btnGuardar.PressedImageTint = Color.FromArgb(32, 32, 32);
-            btnGuardar.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnGuardar.Rounding = new Padding(8);
-            btnGuardar.Size = new Size(304, 44);
-            btnGuardar.TabIndex = 12;
-            btnGuardar.TextAlignment = StringAlignment.Center;
-            btnGuardar.TextPadding = 12;
-            btnGuardar.TextSpacing = 2;
+            cmbTipoCategoria.BackColor = Color.Transparent;
+            cmbTipoCategoria.BackgroundColor = Color.FromArgb(255, 255, 255);
+            cmbTipoCategoria.DropDownBackgroundColor = Color.White;
+            cmbTipoCategoria.DropDownForeColor = Color.FromArgb(27, 27, 27);
+            cmbTipoCategoria.ExpandArrowColor = Color.DimGray;
+            cmbTipoCategoria.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cmbTipoCategoria.ForeColor = Color.Gray;
+            cmbTipoCategoria.Items = new string[]
+            {
+                "Ingreso",
+                "Gasto"
+            };
+            cmbTipoCategoria.Location = new Point(12, 159);
+            cmbTipoCategoria.Margin = new Padding(5, 4, 5, 4);
+            cmbTipoCategoria.MaxDropDownHeight = 240;
+            cmbTipoCategoria.Name = "cmbTipoCategoria";
+            cmbTipoCategoria.NoSelectionText = "None";
+            cmbTipoCategoria.OutlineColor = Color.FromArgb(64, 128, 128, 128);
+            cmbTipoCategoria.OutlineThickness = 1F;
+            cmbTipoCategoria.Rounding = 8;
+            cmbTipoCategoria.SelectedIndex = 0;
+            cmbTipoCategoria.SelectedItem = "Ingreso";
+            cmbTipoCategoria.Size = new Size(177, 36);
+            cmbTipoCategoria.SortAlphabetically = false;
+            cmbTipoCategoria.TabIndex = 6;
+            cmbTipoCategoria.SelectedIndexChanged += cuiComboBox2_SelectedIndexChanged;
             // 
-            // btnNuevo
+            // label6
             // 
-            btnNuevo.CheckButton = false;
-            btnNuevo.Checked = false;
-            btnNuevo.CheckedBackground = Color.FromArgb(255, 106, 0);
-            btnNuevo.CheckedForeColor = Color.White;
-            btnNuevo.CheckedImageTint = Color.White;
-            btnNuevo.CheckedOutline = Color.FromArgb(255, 106, 0);
-            btnNuevo.Content = "Your text here!";
-            btnNuevo.DialogResult = DialogResult.None;
-            btnNuevo.Font = new Font("Microsoft Sans Serif", 9.75F);
-            btnNuevo.ForeColor = Color.Black;
-            btnNuevo.HoverBackground = Color.White;
-            btnNuevo.HoverForeColor = Color.DimGray;
-            btnNuevo.HoverImageTint = Color.DimGray;
-            btnNuevo.HoverOutline = Color.FromArgb(32, 128, 128, 128);
-            btnNuevo.Image = null;
-            btnNuevo.ImageExpand = new Point(0, 0);
-            btnNuevo.Location = new Point(0, 0);
-            btnNuevo.Name = "btnNuevo";
-            btnNuevo.NormalBackground = Color.White;
-            btnNuevo.NormalForeColor = Color.Black;
-            btnNuevo.NormalImageTint = Color.Black;
-            btnNuevo.NormalOutline = Color.FromArgb(64, 128, 128, 128);
-            btnNuevo.OutlineThickness = 1F;
-            btnNuevo.Padding = new Padding(12);
-            btnNuevo.PressedBackground = Color.WhiteSmoke;
-            btnNuevo.PressedForeColor = Color.FromArgb(32, 32, 32);
-            btnNuevo.PressedImageTint = Color.FromArgb(32, 32, 32);
-            btnNuevo.PressedOutline = Color.FromArgb(64, 128, 128, 128);
-            btnNuevo.Rounding = new Padding(8);
-            btnNuevo.Size = new Size(153, 45);
-            btnNuevo.TabIndex = 13;
-            btnNuevo.TextAlignment = StringAlignment.Center;
-            btnNuevo.TextPadding = 12;
-            btnNuevo.TextSpacing = 2;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label6.ForeColor = Color.DimGray;
+            label6.Location = new Point(12, 138);
+            label6.Name = "label6";
+            label6.Size = new Size(118, 17);
+            label6.TabIndex = 5;
+            label6.Text = "Tipo de Categoria";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label4.ForeColor = Color.DimGray;
+            label4.Location = new Point(12, 61);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 17);
+            label4.TabIndex = 3;
+            label4.Text = "Nombre";
+            // 
+            // cuiTextBox2
+            // 
+            cuiTextBox2.BackColor = Color.Transparent;
+            cuiTextBox2.BackgroundColor = Color.White;
+            cuiTextBox2.Content = "";
+            cuiTextBox2.FocusBackgroundColor = Color.White;
+            cuiTextBox2.FocusImageTint = Color.White;
+            cuiTextBox2.FocusOutlineColor = SystemColors.MenuHighlight;
+            cuiTextBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cuiTextBox2.ForeColor = Color.DimGray;
+            cuiTextBox2.Image = null;
+            cuiTextBox2.ImageExpand = new Point(0, 0);
+            cuiTextBox2.ImageOffset = new Point(0, 0);
+            cuiTextBox2.Location = new Point(12, 76);
+            cuiTextBox2.Margin = new Padding(4);
+            cuiTextBox2.Multiline = false;
+            cuiTextBox2.Name = "cuiTextBox2";
+            cuiTextBox2.NormalImageTint = Color.White;
+            cuiTextBox2.OutlineColor = Color.DarkGray;
+            cuiTextBox2.Padding = new Padding(20, 8, 20, 0);
+            cuiTextBox2.PasswordChar = false;
+            cuiTextBox2.PlaceholderColor = Color.Silver;
+            cuiTextBox2.PlaceholderText = "";
+            cuiTextBox2.Rounding = new Padding(15);
+            cuiTextBox2.Size = new Size(369, 36);
+            cuiTextBox2.TabIndex = 2;
+            cuiTextBox2.TextOffset = new Size(0, 0);
+            cuiTextBox2.UnderlinedStyle = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(12, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(138, 21);
+            label3.TabIndex = 1;
+            label3.Text = "Nueva Categoria";
             // 
             // FrmCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1280, 720);
-            Controls.Add(lblTitulo);
-            Controls.Add(lblSubtitulo);
-            Controls.Add(pnlKpiTotal);
-            Controls.Add(pnlKpiIngresos);
-            Controls.Add(pnlKpiGastos);
-            Controls.Add(pnlLista);
-            Controls.Add(pnlForm);
-            Font = new Font("Segoe UI", 9F);
-            MinimumSize = new Size(1100, 680);
+            BackColor = Color.FromArgb(248, 250, 252);
+            ClientSize = new Size(1171, 716);
+            Controls.Add(cuiPanel5);
+            Controls.Add(cuiPanel4);
+            Controls.Add(pnlCardCredito);
+            Controls.Add(pnlCardDeuda);
+            Controls.Add(pnlCardLiquidez);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmCategorias";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "ControlFinanzas - Categorías";
-            pnlLista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvCategorias).EndInit();
-            pnlForm.ResumeLayout(false);
-            pnlForm.PerformLayout();
+            Text = "FrmCategorias";
+            pnlCardCredito.ResumeLayout(false);
+            pnlCardCredito.PerformLayout();
+            pnlCardDeuda.ResumeLayout(false);
+            pnlCardDeuda.PerformLayout();
+            pnlCardLiquidez.ResumeLayout(false);
+            pnlCardLiquidez.PerformLayout();
+            cuiPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCuentas).EndInit();
+            cuiPanel5.ResumeLayout(false);
+            cuiPanel5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
+
         #endregion
 
-        #region Helpers de estilo
-        private void ConfigKpi(CuoreUI.Controls.cuiPanel p, System.Windows.Forms.Label tit, System.Windows.Forms.Label val,
-                               string titulo, System.Drawing.Color acento, int x, System.Drawing.Font fT, System.Drawing.Font fV)
-        {
-            p.Location = new System.Drawing.Point(x, 84);
-            p.Size = new System.Drawing.Size(276, 96);
-            p.PanelColor = CTarjeta;
-            p.PanelOutlineColor = CBorde;
-            p.OutlineThickness = 1F;
-            p.Rounding = new System.Windows.Forms.Padding(12);
-            tit.AutoSize = true; tit.Font = fT; tit.ForeColor = acento == CTexto ? CLabel : acento;
-            tit.BackColor = System.Drawing.Color.Transparent;
-            tit.Location = new System.Drawing.Point(20, 16); tit.Text = titulo;
-            val.AutoSize = true; val.Font = fV; val.ForeColor = CTexto;
-            val.BackColor = System.Drawing.Color.Transparent;
-            val.Location = new System.Drawing.Point(16, 38); val.Text = "0";
-            p.Controls.Add(tit); p.Controls.Add(val);
-        }
-
-        private void ConfigLabel(System.Windows.Forms.Label l, string texto, int y, System.Drawing.Font f)
-        {
-            l.AutoSize = true; l.Font = f; l.ForeColor = CLabel;
-            l.BackColor = System.Drawing.Color.Transparent;
-            l.Location = new System.Drawing.Point(24, y); l.Text = texto;
-        }
-
-        private void ConfigTextBox(CuoreUI.Controls.cuiTextBox t, string placeholder, System.Drawing.Point loc,
-                                   System.Drawing.Size size, System.Drawing.Font f)
-        {
-            t.Location = loc; t.Size = size; t.Font = f;
-            t.PlaceholderText = placeholder;
-            t.BackgroundColor = CTarjeta;
-            t.ForeColor = CTexto;
-            t.PlaceholderColor = CLabel;
-            t.Rounding = new System.Windows.Forms.Padding(8);
-            t.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-        }
-
-        private void ConfigSecundario(CuoreUI.Controls.cuiButton b, string texto, System.Drawing.Point loc, System.Drawing.Size size)
-        {
-            b.Content = texto; b.Location = loc; b.Size = size;
-            b.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            b.Rounding = new System.Windows.Forms.Padding(8);
-            b.NormalBackground = CTarjeta; b.HoverBackground = CFondo; b.PressedBackground = CBorde;
-            b.NormalForeColor = CTexto; b.HoverForeColor = CTexto; b.PressedForeColor = CTexto;
-            b.NormalOutline = CBorde; b.HoverOutline = CLabel; b.PressedOutline = CLabel;
-            b.Cursor = System.Windows.Forms.Cursors.Hand;
-        }
-        #endregion
-
-        private System.Windows.Forms.Label lblTitulo, lblSubtitulo;
-        private CuoreUI.Controls.cuiPanel pnlKpiTotal, pnlKpiIngresos, pnlKpiGastos, pnlLista, pnlForm, pnlColorPreview;
-        private System.Windows.Forms.Label lblKpiTotalTit, lblKpiTotal, lblKpiIngTit, lblKpiIngresos, lblKpiGasTit, lblKpiGastos;
-        private CuoreUI.Controls.cuiTextBox txtBuscar, txtNombre, txtColor;
-        private System.Windows.Forms.ComboBox cmbFiltroTipo, cmbTipo;
-        private System.Windows.Forms.DataGridView dgvCategorias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId, colColor, colNombre, colTipo, colHex, colEstado;
-        private System.Windows.Forms.Label lblFormTitulo, lblNombre, lblTipo, lblColor, lblEstado, lblEstadoTexto;
-        private CuoreUI.Controls.cuiButton btnElegirColor, btnGuardar, btnNuevo;
-        private CuoreUI.Controls.cuiSwitch chkEstado;
-        private System.Windows.Forms.ColorDialog colorDialog;
+        private Label label2;
+        private Label label1;
+        private CuoreUI.Controls.cuiPanel pnlCardCredito;
+        private Label lblTotalCategoriasGasto;
+        private Label lbTitulolTotalCategoriasGasto;
+        private CuoreUI.Controls.cuiPanel pnlCardDeuda;
+        private Label lblTotalCategoriasIngreso;
+        private Label lblTituloTotalCategoriasIngreso;
+        private CuoreUI.Controls.cuiPanel pnlCardLiquidez;
+        private Label lblTotalCategoria;
+        private Label lblTituloTotalCategoria;
+        private CuoreUI.Controls.cuiPanel cuiPanel4;
+        private CuoreUI.Controls.cuiButton btnActivarDesactivar;
+        private CuoreUI.Controls.cuiButton btnEditarCategoria;
+        private DataGridView dgvCuentas;
+        private CuoreUI.Controls.cuiComboBox ComboboxBuscarCategoriaPorTipo;
+        private CuoreUI.Controls.cuiTextBox txtBuscarCategoriaPorNombre;
+        private DataGridViewTextBoxColumn colColor;
+        private DataGridViewTextBoxColumn colNombre;
+        private DataGridViewTextBoxColumn colTipo;
+        private DataGridViewTextBoxColumn colEstado;
+        private CuoreUI.Controls.cuiPanel cuiPanel5;
+        private CuoreUI.Controls.cuiButton btnCancelar;
+        private CuoreUI.Controls.cuiButton btnGuardarCategoria;
+        private CuoreUI.Controls.cuiCheckbox cuiCheckbox1;
+        private CuoreUI.Controls.cuiComboBox cmbTipoCategoria;
+        private Label label6;
+        private Label label4;
+        private CuoreUI.Controls.cuiTextBox cuiTextBox2;
+        private Label label3;
+        private CuoreUI.Controls.cuiPanel pnlColorPreview;
+        private CuoreUI.Controls.cuiButton btnSeleccinarColor;
+        private Label label5;
+        private TextBox textBox1;
     }
 }

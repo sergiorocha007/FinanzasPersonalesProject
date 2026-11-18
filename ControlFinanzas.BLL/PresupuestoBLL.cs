@@ -1,5 +1,6 @@
 using ControlFinanzas.DAL;
 using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.Sesion;
 
 namespace ControlFinanzas.BLL
 {
@@ -14,6 +15,14 @@ namespace ControlFinanzas.BLL
 
         public async Task<int> GuardarAsync(PresupuestoEntity presupuesto)
         {
+            if (presupuesto.UsuarioId <= 0 && SesionUsuario.HaySesionActiva)
+            {
+                presupuesto.AsignarUsuarioId(SesionUsuario.UsuarioId);
+            }
+
+            if (presupuesto.UsuarioId <= 0)
+                throw new ArgumentException("Usuario no válido. Inicie sesión nuevamente.");
+
             if (presupuesto.LimiteMensual <= 0)
                 throw new ArgumentException("El dinero mensual asignado debe ser mayor a cero.");
 
@@ -26,7 +35,9 @@ namespace ControlFinanzas.BLL
             if (presupuesto.CategoriaId <= 0)
                 throw new ArgumentException("Debe seleccionar una categoría de gasto válida.");
 
-            return await _presupuestoDAL.GuardarAsync(presupuesto);
+            int nuevoId = await _presupuestoDAL.GuardarAsync(presupuesto);
+            EventosFinanzas.NotificarPresupuestosCambiados();
+            return nuevoId;
         }
 
         public async Task<List<PresupuestoDTO>> ObtenerPorPeriodoAsync(int usuarioId, byte mes, short anio)
@@ -46,6 +57,7 @@ namespace ControlFinanzas.BLL
                 throw new ArgumentException("ID de presupuesto inválido.");
 
             await _presupuestoDAL.EliminarAsync(idPresupuesto, usuarioId);
+            EventosFinanzas.NotificarPresupuestosCambiados();
         }
     }
 }

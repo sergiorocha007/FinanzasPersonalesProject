@@ -287,6 +287,7 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
             btnMetasAhorro.TextAlignment = StringAlignment.Near;
             btnMetasAhorro.TextPadding = 12;
             btnMetasAhorro.TextSpacing = 2;
+            btnMetasAhorro.Click += btnMetasAhorro_Click;
             // 
             // btnCategorias
             // 

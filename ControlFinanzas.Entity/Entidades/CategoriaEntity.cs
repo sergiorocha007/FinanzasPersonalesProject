@@ -32,7 +32,7 @@ namespace ControlFinanzas.Entity.Entidades
             CambiarTipo(tipo);
             CambiarColorHex(colorHex);
 
-            Estado = true; // Por defecto activo al crear un nuevo registro
+            Estado = true; 
         }
 
         #endregion

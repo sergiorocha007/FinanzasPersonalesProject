@@ -5,9 +5,9 @@ using System.Data;
 
 namespace ControlFinanzas.DAL
 {
-    public class CuentaDAO
+    public class CuentaDAL
     {
-        public bool Insertar(Cuenta cuenta)
+        public bool Insertar(CuentaEntity cuenta)
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
@@ -28,7 +28,7 @@ namespace ControlFinanzas.DAL
             }
         }
 
-        public bool Actualizar(Cuenta cuenta)
+        public bool Actualizar(CuentaEntity cuenta)
         {
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
@@ -61,9 +61,9 @@ namespace ControlFinanzas.DAL
             }
         }
 
-        public List<Cuenta> ObtenerTodas(int usuarioId)
+        public List<CuentaEntity> ObtenerTodas(int usuarioId)
         {
-            var lista = new List<Cuenta>();
+            var lista = new List<CuentaEntity>();
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
@@ -87,9 +87,9 @@ namespace ControlFinanzas.DAL
         }
 
 
-        public List<Cuenta> BuscarPorNombre(string nombre, int usuarioId)
+        public List<CuentaEntity> BuscarPorNombre(string nombre, int usuarioId)
         {
-            var lista = new List<Cuenta>();
+            var lista = new List<CuentaEntity>();
 
             using (SqlConnection con = Conexion.ObtenerConexion())
             {
@@ -115,10 +115,10 @@ namespace ControlFinanzas.DAL
 
 
 
-        private Cuenta MapearDesdeReader(SqlDataReader reader)
+        private CuentaEntity MapearDesdeReader(SqlDataReader reader)
         {
             string tipo = reader["TipoCuenta"].ToString()!;
-            Cuenta cuenta;
+            CuentaEntity cuenta;
 
             if (tipo == "Credito")
             {
@@ -132,7 +132,7 @@ namespace ControlFinanzas.DAL
             }
             else
             {
-                cuenta = new CuentaDebito
+                cuenta = new CuentaDebitoEntity
                 {
                     SaldoActual = reader["SaldoActual"] != DBNull.Value ? Convert.ToDecimal(reader["SaldoActual"]) : 0m
                 };
@@ -149,7 +149,7 @@ namespace ControlFinanzas.DAL
         }
 
 
-        private void MapearParametrosComunes(SqlCommand cmd, Cuenta cuenta)
+        private void MapearParametrosComunes(SqlCommand cmd, CuentaEntity cuenta)
         {
             cmd.Parameters.AddWithValue("@UsuarioId", cuenta.UsuarioId);
             cmd.Parameters.AddWithValue("@Nombre", cuenta.Nombre);
@@ -165,7 +165,7 @@ namespace ControlFinanzas.DAL
                 cmd.Parameters.AddWithValue("@DiaCorte", (object)tc.DiaCorte ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@DiaPago", (object)tc.DiaPago ?? DBNull.Value);
             }
-            else if (cuenta is CuentaDebito cd)
+            else if (cuenta is CuentaDebitoEntity cd)
             {
                 cmd.Parameters.AddWithValue("@SaldoActual", cd.SaldoActual);
                 cmd.Parameters.AddWithValue("@LimiteCredito", 0m);
