@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ControlFinanzas.BLL.Common;
 using ControlFinanzas.DAL;
 using ControlFinanzas.Entity.Entidades;
 using ControlFinanzas.Entity.Sesion; // Suponiendo que mantienes tu clase estática de sesión

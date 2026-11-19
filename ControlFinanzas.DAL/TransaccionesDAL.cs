@@ -1,5 +1,6 @@
 ﻿using ControlFinanzas.DAL.Common;
 using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 using Microsoft.Data.SqlClient;
 using System.Data;
 

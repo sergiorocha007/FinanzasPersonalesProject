@@ -55,6 +55,12 @@ namespace ControlFinanzas.UI.Formularios
             cuiButton2 = new CuoreUI.Controls.cuiButton();
             cuiButton1 = new CuoreUI.Controls.cuiButton();
             dgvCuentas = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             ComboboxBuscarPorTipo = new CuoreUI.Controls.cuiComboBox();
             cuiTextBox1 = new CuoreUI.Controls.cuiTextBox();
             cuiPanel5 = new CuoreUI.Controls.cuiPanel();
@@ -82,12 +88,7 @@ namespace ControlFinanzas.UI.Formularios
             label4 = new Label();
             cuiTextBox2 = new CuoreUI.Controls.cuiTextBox();
             label3 = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             pnlCardLiquidez.SuspendLayout();
             pnlCardDeuda.SuspendLayout();
             pnlCardCredito.SuspendLayout();
@@ -329,11 +330,43 @@ namespace ControlFinanzas.UI.Formularios
             // dgvCuentas
             // 
             dgvCuentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCuentas.Columns.AddRange(new DataGridViewColumn[] { ID, Column2, Column3, Column4, Column5, Column6 });
+            dgvCuentas.Columns.AddRange(new DataGridViewColumn[] { ID, Column2, Column3, Column4, Column5, Column6, Column1 });
             dgvCuentas.Location = new Point(12, 118);
             dgvCuentas.Name = "dgvCuentas";
             dgvCuentas.Size = new Size(676, 270);
             dgvCuentas.TabIndex = 2;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "Id";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Visible = false;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Nombre";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Tipo";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Moneda";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Saldo/Deuda";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Estado";
+            Column6.Name = "Column6";
             // 
             // ComboboxBuscarPorTipo
             // 
@@ -910,37 +943,11 @@ namespace ControlFinanzas.UI.Formularios
             label3.TabIndex = 1;
             label3.Text = "Nueva Cuenta";
             // 
-            // ID
+            // Column1
             // 
-            ID.HeaderText = "Id";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Visible = false;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Nombre";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Tipo";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Moneda";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Saldo/Deuda";
-            Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Estado";
-            Column6.Name = "Column6";
+            Column1.HeaderText = "Id";
+            Column1.Name = "Column1";
+            Column1.Visible = false;
             // 
             // FrmCuentas
             // 
@@ -1029,5 +1036,6 @@ namespace ControlFinanzas.UI.Formularios
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column1;
     }
 }

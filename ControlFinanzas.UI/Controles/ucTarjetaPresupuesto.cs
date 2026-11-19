@@ -1,4 +1,4 @@
-using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

@@ -2,6 +2,7 @@ using ControlFinanzas.DAL.Common;
 using ControlFinanzas.Entity.Sesion;
 using ControlFinanzas.UI.Formularios;
 using ControlFinanzas.UI.Formularios.Seguridad;
+using QuestPDF.Infrastructure;
 
 namespace ControlFinanzas.UI
 {
@@ -13,6 +14,9 @@ namespace ControlFinanzas.UI
         [STAThread]
         static void Main()
         {
+            // Activar la licencia gratuita de QuestPDF (Community) antes de generar cualquier PDF
+            QuestPDF.Settings.License = LicenseType.Community;
+
             ApplicationConfiguration.Initialize();
 
             ConfiguracionDal configuracionDal = new();

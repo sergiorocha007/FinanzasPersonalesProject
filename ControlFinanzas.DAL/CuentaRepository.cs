@@ -1,5 +1,5 @@
 ﻿using ControlFinanzas.DAL.Common; // <-- Asegúrate de agregar esta referencia
-using ControlFinanzas.Entity;
+using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 using Microsoft.Data.SqlClient;
 using System.Data;
 

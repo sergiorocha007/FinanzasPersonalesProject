@@ -1,4 +1,5 @@
 ﻿using ControlFinanzas.BLL;
+using ControlFinanzas.BLL.Common;
 using ControlFinanzas.Entity.Entidades;
 using ControlFinanzas.Entity.Sesion;
 using ControlFinanzas.UI.Controles;

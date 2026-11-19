@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.Entity\\ControlFinanzas.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzasPersonales\\ControlFinanzas.Entity\\ControlFinanzas.Entity.csproj",
       "projectName": "ControlFinanzas.Entity",
-      "projectPath": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.Entity\\ControlFinanzas.Entity.csproj",
+      "projectPath": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzasPersonales\\ControlFinanzas.Entity\\ControlFinanzas.Entity.csproj",
       "packagesPath": "C:\\Users\\rocha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzas\\ControlFinanzas.Entity\\obj\\",
+      "outputPath": "C:\\Users\\rocha\\Desktop\\POO\\ControlFinanzasPersonales\\ControlFinanzas.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rocha\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,7 +1,7 @@
 using ControlFinanzas.BLL;
-using ControlFinanzas.BLL.Servicios;
-using ControlFinanzas.Entity;
+using ControlFinanzas.BLL.Common;
 using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 using ControlFinanzas.Entity.Sesion;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace ControlFinanzas.UI.Formularios
     public partial class FrmCuentas : Form
     {
 
-        private readonly CuentaService _cuentaService;
+        private readonly CuentaBLL _cuentaService;
         private readonly int _usuarioIdLogueado;
 
         private readonly CuentaBLL _cuentaBLL = new CuentaBLL();
@@ -34,7 +34,7 @@ namespace ControlFinanzas.UI.Formularios
         public FrmCuentas()
         {
             InitializeComponent();
-            _cuentaService = new CuentaService();
+            _cuentaService = new CuentaBLL();
             _usuarioIdLogueado = SesionUsuario.UsuarioId;
             ConfigurarEstiloGrid();
             SuscribirEventos();
@@ -410,7 +410,7 @@ namespace ControlFinanzas.UI.Formularios
             }
 
             DataGridViewRow fila = dgvCuentas.SelectedRows[0];
-            int id = Convert.ToInt32(fila.Cells["Column1"].Value);
+            int id = Convert.ToInt32(fila.Cells["ID"].Value);
             string nombre = fila.Cells["Column2"].Value?.ToString() ?? "la cuenta";
             string estado = fila.Cells["Column6"].Value?.ToString() ?? "";
 

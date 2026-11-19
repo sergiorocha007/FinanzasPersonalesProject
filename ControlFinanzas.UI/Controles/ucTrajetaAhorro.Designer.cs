@@ -88,16 +88,16 @@
             lblMonto.ForeColor = Color.FromArgb(15, 23, 42);
             lblMonto.Location = new Point(7, 50);
             lblMonto.Name = "lblMonto";
-            lblMonto.Size = new Size(97, 30);
+            lblMonto.Size = new Size(123, 30);
             lblMonto.TabIndex = 9;
-            lblMonto.Text = "$600.00";
+            lblMonto.Text = "$10000.00";
             // 
             // lblObjetivo
             // 
             lblObjetivo.AutoSize = true;
             lblObjetivo.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblObjetivo.ForeColor = Color.FromArgb(100, 116, 139);
-            lblObjetivo.Location = new Point(105, 59);
+            lblObjetivo.Location = new Point(134, 59);
             lblObjetivo.Name = "lblObjetivo";
             lblObjetivo.Size = new Size(82, 20);
             lblObjetivo.TabIndex = 8;
@@ -242,7 +242,7 @@
             Controls.Add(lblNombre);
             Margin = new Padding(10);
             Name = "ucTrajetaAhorro";
-            Size = new Size(339, 256);
+            Size = new Size(344, 256);
             pnlBarraProgreso.ResumeLayout(false);
             pnlSugerencia.ResumeLayout(false);
             ResumeLayout(false);

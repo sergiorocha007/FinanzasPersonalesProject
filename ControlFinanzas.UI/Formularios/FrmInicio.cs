@@ -7,6 +7,11 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
         {
             InitializeComponent();
             _usuarioIdLogueado = SesionUsuario.UsuarioId;
+            btnDashboard.Click += btnDashboard_Click;
+            btnReportes.Click  += btnReportes_Click;
+
+            // Abrir automáticamente el Dashboard como pantalla de inicio
+            btnDashboard_Click(this, EventArgs.Empty);
         }
 
         private void cuiButton7_Click(object sender, EventArgs e)
@@ -16,8 +21,10 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
 
 
         private Form formularioActivo = null;
+        private FrmDashboard _dashboard;
         private FrmCuentas _cuentas;
         private FrmCategorias _categorias;
+        private FrmReportes _reportes;
 
         private FrmTransacciones _Transacciones;
 
@@ -80,10 +87,12 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
             }
 
             _cuentas?.Dispose();
+            _dashboard?.Dispose();
             _categorias?.Dispose();
             _Transacciones?.Dispose();
             _presupuesto?.Dispose();
             _metasAhorro?.Dispose();
+            _reportes?.Dispose();
 
             SesionUsuario.CerrarSesion();
 
@@ -112,6 +121,21 @@ namespace ControlFinanzas.UI.Formularios.Seguridad
             if (_metasAhorro == null || _metasAhorro.IsDisposed)
                 _metasAhorro = new FrmMetasAhorro();
             AbrirFormularioHijo(_metasAhorro, "Metas Ahorro");
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            if (_dashboard == null || _dashboard.IsDisposed)
+                _dashboard = new FrmDashboard();
+            AbrirFormularioHijo(_dashboard, "Dashboard");
+        }
+
+        // Abre el formulario de Reportes dentro del panel principal
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            if (_reportes == null || _reportes.IsDisposed)
+                _reportes = new FrmReportes();
+            AbrirFormularioHijo(_reportes, "Reportes");
         }
     }
 }

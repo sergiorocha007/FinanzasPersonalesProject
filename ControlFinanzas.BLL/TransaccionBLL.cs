@@ -1,5 +1,7 @@
+using ControlFinanzas.BLL.Common;
 using ControlFinanzas.DAL;
 using ControlFinanzas.Entity.Entidades;
+using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 
 namespace ControlFinanzas.BLL
 {

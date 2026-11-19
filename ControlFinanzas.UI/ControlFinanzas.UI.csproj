@@ -17,6 +17,7 @@
     <PackageReference Include="CuoreUI.Winforms" Version="2026.4.25" />
     <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="HartUI.Winforms" Version="2026.8.24" />
+    <PackageReference Include="QuestPDF" Version="2025.3.3" />
   </ItemGroup>
 
   <ItemGroup>

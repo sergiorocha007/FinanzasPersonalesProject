@@ -1,4 +1,4 @@
-﻿using ControlFinanzas.Entity;
+﻿using ControlFinanzas.Entity.ObjetosTransferenciaDatos;
 
 namespace ControlFinanzas.DAL
 {
